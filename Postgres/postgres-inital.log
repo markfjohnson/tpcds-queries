@@ -1,0 +1,7 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1573259180169,30630,Query 15,200,OK,Query 15 1-1,text,true,,1860,0,1,1,null,30622,0,2134
+1573259210804,38633,query 17,200,OK,Query 17 2-1,text,true,,346,0,1,1,null,38581,0,535
+1573259249441,2459,Query 26,200,OK,Query 26 3-1,text,true,,30,0,1,1,null,2408,0,623
+1573259251909,9154,Query 28,200,OK,Query 28 4-1,text,true,,308,0,1,1,null,9102,0,705
+1573259261066,2358,query 30,200,OK,Query 30 5-1,text,true,,362,0,1,1,null,2307,0,600
+1573259263428,2488,query 45,200,OK,Query 45 6-1,text,true,,24,0,1,1,null,2437,0,351

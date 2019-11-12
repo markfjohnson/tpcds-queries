@@ -1,0 +1,18 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1573256667473,1596,Query 1,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 1 1-1,text,false,,46,0,2,2,null,0,0,1595
+1573256668462,922,Query 1,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 1 1-2,text,false,,46,0,1,1,null,0,0,922
+1573256669463,306,Query 1,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 1 1-3,text,false,,46,0,1,1,null,0,0,306
+1573256670459,202,Query 1,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 1 1-4,text,false,,46,0,1,1,null,0,0,202
+1573256671457,202,Query 1,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 1 1-5,text,false,,46,0,1,1,null,0,0,202
+1573256671663,150,Query 3,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 3 2-1,text,false,,46,0,1,1,null,0,0,150
+1573256672668,147,Query 3,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 3 2-2,text,false,,46,0,1,1,null,0,0,147
+1573256673666,276,Query 3,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 3 2-3,text,false,,46,0,1,1,null,0,0,276
+1573256674664,270,Query 3,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 3 2-4,text,false,,46,0,1,1,null,0,0,270
+1573256675663,298,Query 3,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 3 2-5,text,false,,46,0,1,1,null,0,0,298
+1573256675964,298,Oracle 4,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 4 3-1,text,false,,46,0,1,1,null,0,0,298
+1573256676968,275,Oracle 4,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 4 3-2,text,false,,46,0,1,1,null,0,0,275
+1573256677966,285,Oracle 4,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 4 3-3,text,false,,46,0,1,1,null,0,0,285
+1573256678965,293,Oracle 4,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 4 3-4,text,false,,46,0,1,1,null,0,0,293
+1573256679963,272,Oracle 4,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 4 3-5,text,false,,46,0,1,1,null,0,0,272
+1573256680237,258,Query 7,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 7 4-1,text,false,,46,0,1,1,null,0,0,258
+1573256681237,296,Query 7,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 7 4-2,text,false,,46,0,1,1,null,0,0,296

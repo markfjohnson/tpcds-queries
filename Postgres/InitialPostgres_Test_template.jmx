@@ -260,7 +260,7 @@ select  i_item_id,
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 28" enabled="true">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 28" enabled="true">
           <stringProp name="dataSource">dremio_connection</stringProp>
           <stringProp name="query">-- start query 27 in stream 0 using template query28.tpl
 select  *
