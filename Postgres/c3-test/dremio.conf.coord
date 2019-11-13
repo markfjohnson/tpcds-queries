@@ -29,10 +29,10 @@ services: {
 }
 zookeeper: "dremio-c1:2181"
 
-debug: {
-  # Enable caching for distributed storage, it is turned off by default
-  dist.caching.enabled: true,
-  # Max percent of total available cache space to use when possible for distributed storage
-  dist.max.cache.space.percent: 100
-}
+#debug: {
+#  # Enable caching for distributed storage, it is turned off by default
+#  dist.caching.enabled: true,
+#  # Max percent of total available cache space to use when possible for distributed storage
+#  dist.max.cache.space.percent: 100
+#}
 
