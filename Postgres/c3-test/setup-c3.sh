@@ -5,6 +5,14 @@ ansible dremio-exec -m file -a "path=/mnt/cachemanagerdisk/dir2 state=absent"
 ansible dremio-exec -m file -a "path=/mnt/cachemanagerdisk/dir3 state=absent"
 ansible dremio-exec -m file -a "path=/mnt/cachemanagerdisk/dir4 state=absent"
 
+ansible dremio -m file -a "path=/opt/dremio/data state=absent"
+ansible dremio -m file -a "path=/opt/dremio/log state=absent"
+ansible dremio -m file -a "path=/opt/dremio/run state=absent"
+
+ansible dremio -m file -a "path=/opt/dremio/data state=directory owner=dremio group=dremio"
+ansible dremio -m file -a "path=/opt/dremio/log state=directory owner=dremio group=dremio"
+ansible dremio -m file -a "path=/opt/dremio/run state=directory owner=dremio group=dremio"
+
 ansible dremio-coord -m copy -a "src=dremio-env-coord dest=/opt/dremio/conf/dremio-env owner=dremio group=dremio"
 ansible dremio-coord -m copy -a "src=dremio.conf.coord dest=/opt/dremio/conf/dremio.conf owner=dremio group=dremio"
 ansible dremio-exec -m copy -a "src=dremio.conf.exec dest=/opt/dremio/conf/dremio.conf owner=dremio group=dremio"

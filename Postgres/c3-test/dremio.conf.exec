@@ -18,7 +18,7 @@ paths: {
   # the local path for dremio to store data.
   local: ${DREMIO_HOME}"/data"
   dist: "hdfs://hdp1.local:8020/dremio"
-
+#  dist: "dremioS3:///dremio-dist2/"
 }
 
 services: {

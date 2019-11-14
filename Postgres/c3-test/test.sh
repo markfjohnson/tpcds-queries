@@ -1,1 +1,11 @@
-jmeter -n -t InitialPostgres_Test_template.jmx -l postgres-inital.log -e -o results-initial
+ansible dremio -m service -a "name=dremio state=stopped"
+ansible dremio-exec -m file -a "path=/mnt/cachemanagerdisk/db state=absent"
+ansible dremio-exec -m file -a "path=/mnt/cachemanagerdisk/dir1 state=absent"
+ansible dremio-exec -m file -a "path=/mnt/cachemanagerdisk/dir2 state=absent"
+ansible dremio-exec -m file -a "path=/mnt/cachemanagerdisk/dir3 state=absent"
+ansible dremio-exec -m file -a "path=/mnt/cachemanagerdisk/dir4 state=absent"
+
+ansible dremio -m file -a "path=/opt/dremio/data state=absent"
+ansible dremio -m file -a "path=/opt/dremio/log state=absent"
+ansible dremio -m file -a "path=/opt/dremio/run state=absent"
+ansible dremio -m shell -a "ls -lt /opt/dremio/data"
