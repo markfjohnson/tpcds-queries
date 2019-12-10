@@ -4,7 +4,11 @@ create table IF NOT EXISTS dbgen_version
     dv_create_date            date                          ,
     dv_create_time            timestamp                     ,
     dv_cmdline_args           varchar(200)
-);
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/dbgen_version_1_8.dat' into table dbgen_version;
 
 
 create table IF NOT EXISTS customer_address
@@ -21,9 +25,13 @@ create table IF NOT EXISTS customer_address
     ca_zip                    char(10)                      ,
     ca_country                varchar(20)                   ,
     ca_gmt_offset             decimal(5,2)                  ,
-    ca_location_type          char(20),
-    primary key (ca_address_sk)
-);
+    ca_location_type          char(20)
+--    primary key (ca_address_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/customer_address_1_8.dat' into table customer_address;
 
 create table IF NOT EXISTS customer_demographics
 (
@@ -35,9 +43,13 @@ create table IF NOT EXISTS customer_demographics
     cd_credit_rating          char(10)                      ,
     cd_dep_count              integer                       ,
     cd_dep_employed_count     integer                       ,
-    cd_dep_college_count      integer,
-    primary key (cd_demo_sk)
-);
+    cd_dep_college_count      integer
+--    primary key (cd_demo_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/customer_demographics_1_8.dat' into table customer_demographics;
 
 create table IF NOT EXISTS date_dim
 (
@@ -68,8 +80,14 @@ create table IF NOT EXISTS date_dim
     d_current_week            char(1)                       ,
     d_current_month           char(1)                       ,
     d_current_quarter         char(1)                       ,
-    d_current_year            char(1),
-);
+    d_current_year            char(1)
+--    primary key (d_date_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/date_dim_1_8.dat' into table date_dim;
+
 
 create table IF NOT EXISTS warehouse
 (
@@ -86,9 +104,13 @@ create table IF NOT EXISTS warehouse
     w_state                   char(2)                       ,
     w_zip                     char(10)                      ,
     w_country                 varchar(20)                   ,
-    w_gmt_offset              decimal(5,2),
-    primary key (w_warehouse_sk)
-);
+    w_gmt_offset              decimal(5,2)
+--    primary key (w_warehouse_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/warehouse_1_8.dat' into table warehouse;
 
 create table IF NOT EXISTS ship_mode
 (
@@ -97,9 +119,13 @@ create table IF NOT EXISTS ship_mode
     sm_type                   char(30)                      ,
     sm_code                   char(10)                      ,
     sm_carrier                char(20)                      ,
-    sm_contract               char(20),
-    primary key (sm_ship_mode_sk)
-);
+    sm_contract               char(20)
+--    primary key (sm_ship_mode_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/ship_mode_1_8.dat' into table ship_mode;
 
 create table IF NOT EXISTS time_dim
 (
@@ -112,23 +138,38 @@ create table IF NOT EXISTS time_dim
     t_am_pm                   char(2)                       ,
     t_shift                   char(20)                      ,
     t_sub_shift               char(20)                      ,
-    t_meal_time               char(20),
-    primary key (t_time_sk)
-);
+    t_meal_time               char(20)
+--    primary key (t_time_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/time_dim_1_8.dat' into table time_dim;
 
 create table IF NOT EXISTS reason
 (
     r_reason_sk               integer               not null,
     r_reason_id               char(16)              not null,
     r_reason_desc             char(100)
-);
+--    primary key (r_reason_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/reason_1_8.dat' into table reason;
 
 create table IF NOT EXISTS income_band
 (
     ib_income_band_sk         integer               not null,
     ib_lower_bound            integer                       ,
     ib_upper_bound            integer
-);
+--    primary key (ib_income_band_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/income_band_1_8.dat' into table income_band;
+
 create table IF NOT EXISTS item
 (
     i_item_sk                 integer               not null,
@@ -152,9 +193,13 @@ create table IF NOT EXISTS item
     i_units                   char(10)                      ,
     i_container               char(10)                      ,
     i_manager_id              integer                       ,
-    i_product_name            char(50),
-    primary key (i_item_sk)
-);
+    i_product_name            char(50)
+--    primary key (i_item_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/item_1_8.dat' into table item;
 
 create table IF NOT EXISTS store
 (
@@ -186,9 +231,13 @@ create table IF NOT EXISTS store
     s_zip                     char(10)                      ,
     s_country                 varchar(20)                   ,
     s_gmt_offset              decimal(5,2)                  ,
-    s_tax_precentage          decimal(5,2),
-    primary key (s_store_sk)
-);
+    s_tax_precentage          decimal(5,2)
+--    primary key (s_store_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/store_1_8.dat' into table store;
 
 create table IF NOT EXISTS call_center
 (
@@ -222,9 +271,13 @@ create table IF NOT EXISTS call_center
     cc_zip                    char(10)                      ,
     cc_country                varchar(20)                   ,
     cc_gmt_offset             decimal(5,2)                  ,
-    cc_tax_percentage         decimal(5,2),
-    primary key (cc_call_center_sk)
-);
+    cc_tax_percentage         decimal(5,2)
+--    primary key (cc_call_center_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/call_center_1_8.dat' into table call_center;
 
 create table IF NOT EXISTS customer
 (
@@ -245,9 +298,13 @@ create table IF NOT EXISTS customer
     c_birth_country           varchar(20)                   ,
     c_login                   char(13)                      ,
     c_email_address           char(50)                      ,
-    c_last_review_date_sk     integer,
-    primary key (c_customer_sk)
-);
+    c_last_review_date_sk     integer
+--    primary key (c_customer_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/customer_1_8.dat' into table customer;
 
 create table IF NOT EXISTS web_site
 (
@@ -276,9 +333,13 @@ create table IF NOT EXISTS web_site
     web_zip                   char(10)                      ,
     web_country               varchar(20)                   ,
     web_gmt_offset            decimal(5,2)                  ,
-    web_tax_percentage        decimal(5,2),
-    primary key (web_site_sk)
-);
+    web_tax_percentage        decimal(5,2)
+--    primary key (web_site_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/web_site_1_8.dat' into table web_site;
 
 create table IF NOT EXISTS store_returns
 (
@@ -301,9 +362,13 @@ create table IF NOT EXISTS store_returns
     sr_refunded_cash          decimal(7,2)                  ,
     sr_reversed_charge        decimal(7,2)                  ,
     sr_store_credit           decimal(7,2)                  ,
-    sr_net_loss               decimal(7,2),
-    primary key (sr_item_sk, sr_ticket_number)
-);
+    sr_net_loss               decimal(7,2)
+--    primary key (sr_item_sk, sr_ticket_number)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/store_returns_1_8.dat' into table store_returns;
 
 create table IF NOT EXISTS household_demographics
 (
@@ -311,9 +376,13 @@ create table IF NOT EXISTS household_demographics
     hd_income_band_sk         integer                       ,
     hd_buy_potential          char(15)                      ,
     hd_dep_count              integer                       ,
-    hd_vehicle_count          integer,
-    primary key (hd_demo_sk)
-);
+    hd_vehicle_count          integer
+--    primary key (hd_demo_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/household_demographics_1_8.dat' into table household_demographics;
 
 create table IF NOT EXISTS web_page
 (
@@ -330,9 +399,13 @@ create table IF NOT EXISTS web_page
     wp_char_count             integer                       ,
     wp_link_count             integer                       ,
     wp_image_count            integer                       ,
-    wp_max_ad_count           integer,
-    primary key (wp_web_page_sk)
-);
+    wp_max_ad_count           integer
+--    primary key (wp_web_page_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/web_page_1_8.dat' into table web_page;
 
 create table IF NOT EXISTS promotion
 (
@@ -354,9 +427,13 @@ create table IF NOT EXISTS promotion
     p_channel_demo            char(1)                       ,
     p_channel_details         varchar(100)                  ,
     p_purpose                 char(15)                      ,
-    p_discount_active         char(1),
-    primary key (p_promo_sk)
-);
+    p_discount_active         char(1)
+--    primary key (p_promo_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/promotion_1_8.dat' into table promotion;
 
 create table IF NOT EXISTS catalog_page
 (
@@ -368,18 +445,26 @@ create table IF NOT EXISTS catalog_page
     cp_catalog_number         integer                       ,
     cp_catalog_page_number    integer                       ,
     cp_description            varchar(100)                  ,
-    cp_type                   varchar(100),
-    primary key (cp_catalog_page_sk)
-);
+    cp_type                   varchar(100)
+--    primary key (cp_catalog_page_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/catalog_page_1_8.dat' into table catalog_page;
 
 create table IF NOT EXISTS inventory
 (
     inv_date_sk               integer               not null,
     inv_item_sk               integer               not null,
     inv_warehouse_sk          integer               not null,
-    inv_quantity_on_hand      integer,
-    primary key (inv_date_sk, inv_item_sk, inv_warehouse_sk)
-);
+    inv_quantity_on_hand      integer
+--    primary key (inv_date_sk, inv_item_sk, inv_warehouse_sk)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/inventory_1_8.dat' into table inventory;
 
 create table IF NOT EXISTS catalog_returns
 (
@@ -409,10 +494,13 @@ create table IF NOT EXISTS catalog_returns
     cr_refunded_cash          decimal(7,2)                  ,
     cr_reversed_charge        decimal(7,2)                  ,
     cr_store_credit           decimal(7,2)                  ,
-    cr_net_loss               decimal(7,2),
-    primary key (cr_item_sk, cr_order_number)
-);
-
+    cr_net_loss               decimal(7,2)
+--    primary key (cr_item_sk, cr_order_number)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/catalog_returns_1_8.dat' into table catalog_returns;
 
 create table IF NOT EXISTS web_returns
 (
@@ -439,9 +527,13 @@ create table IF NOT EXISTS web_returns
     wr_refunded_cash          decimal(7,2)                  ,
     wr_reversed_charge        decimal(7,2)                  ,
     wr_account_credit         decimal(7,2)                  ,
-    wr_net_loss               decimal(7,2),
-    primary key (wr_item_sk, wr_order_number)
-);
+    wr_net_loss               decimal(7,2)
+--    primary key (wr_item_sk, wr_order_number)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/web_returns_1_8.dat' into table web_returns;
 
 create table IF NOT EXISTS web_sales
 (
@@ -478,9 +570,13 @@ create table IF NOT EXISTS web_sales
     ws_net_paid_inc_tax       decimal(7,2)                  ,
     ws_net_paid_inc_ship      decimal(7,2)                  ,
     ws_net_paid_inc_ship_tax  decimal(7,2)                  ,
-    ws_net_profit             decimal(7,2),
-    primary key (ws_item_sk, ws_order_number)
-);
+    ws_net_profit             decimal(7,2)
+--    primary key (ws_item_sk, ws_order_number)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/web_sales_1_8.dat' into table web_sales;
 
 create table IF NOT EXISTS catalog_sales
 (
@@ -517,9 +613,13 @@ create table IF NOT EXISTS catalog_sales
     cs_net_paid_inc_tax       decimal(7,2)                  ,
     cs_net_paid_inc_ship      decimal(7,2)                  ,
     cs_net_paid_inc_ship_tax  decimal(7,2)                  ,
-    cs_net_profit             decimal(7,2),
-    primary key (cs_item_sk, cs_order_number)
-);
+    cs_net_profit             decimal(7,2)
+--    primary key (cs_item_sk, cs_order_number)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/catalog_sales_1_8.dat' into table catalog_sales;
 
 create table IF NOT EXISTS store_sales
 (
@@ -545,7 +645,11 @@ create table IF NOT EXISTS store_sales
     ss_coupon_amt             decimal(7,2)                  ,
     ss_net_paid               decimal(7,2)                  ,
     ss_net_paid_inc_tax       decimal(7,2)                  ,
-    ss_net_profit             decimal(7,2),
-    primary key (ss_item_sk, ss_ticket_number)
-);
+    ss_net_profit             decimal(7,2)
+--    primary key (ss_item_sk, ss_ticket_number)
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+STORED AS TEXTFILE;
+LOAD DATA INPATH 'hdfs:/data/tpcds/store_sales_1_8.dat' into table store_sales;
 
