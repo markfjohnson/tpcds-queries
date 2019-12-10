@@ -1,18 +1,1938 @@
 timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
-1573256667473,1596,Query 1,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 1 1-1,text,false,,46,0,2,2,null,0,0,1595
-1573256668462,922,Query 1,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 1 1-2,text,false,,46,0,1,1,null,0,0,922
-1573256669463,306,Query 1,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 1 1-3,text,false,,46,0,1,1,null,0,0,306
-1573256670459,202,Query 1,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 1 1-4,text,false,,46,0,1,1,null,0,0,202
-1573256671457,202,Query 1,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 1 1-5,text,false,,46,0,1,1,null,0,0,202
-1573256671663,150,Query 3,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 3 2-1,text,false,,46,0,1,1,null,0,0,150
-1573256672668,147,Query 3,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 3 2-2,text,false,,46,0,1,1,null,0,0,147
-1573256673666,276,Query 3,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 3 2-3,text,false,,46,0,1,1,null,0,0,276
-1573256674664,270,Query 3,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 3 2-4,text,false,,46,0,1,1,null,0,0,270
-1573256675663,298,Query 3,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 3 2-5,text,false,,46,0,1,1,null,0,0,298
-1573256675964,298,Oracle 4,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 4 3-1,text,false,,46,0,1,1,null,0,0,298
-1573256676968,275,Oracle 4,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 4 3-2,text,false,,46,0,1,1,null,0,0,275
-1573256677966,285,Oracle 4,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 4 3-3,text,false,,46,0,1,1,null,0,0,285
-1573256678965,293,Oracle 4,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 4 3-4,text,false,,46,0,1,1,null,0,0,293
-1573256679963,272,Oracle 4,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 4 3-5,text,false,,46,0,1,1,null,0,0,272
-1573256680237,258,Query 7,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 7 4-1,text,false,,46,0,1,1,null,0,0,258
-1573256681237,296,Query 7,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (null),Query 7 4-2,text,false,,46,0,1,1,null,0,0,296
+1575783203744,3769,Query 1,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 60a9db2d-146b-4b73-9986-dbabda6ef06d on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 1 1-1,text,false,,1716,0,1,32,null,0,0,3769
+1575783203754,4056,query 61,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 1672c446-0049-483a-b8e0-6f500ed58f7a on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",QUERY 61 32-1,text,false,,1716,0,1,31,null,0,0,4056
+1575783203753,4414,query 60,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: f7325623-f0a1-44ea-94ab-0a5409e72ccf on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 60 31-1,text,false,,1716,0,1,30,null,0,0,4414
+1575783203753,4912,query 59,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: caa6e07c-2523-41d6-ae18-c1b45682b98f on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 59 30-1,text,false,,1716,0,1,29,null,0,0,4912
+1575783203753,5387,query 57,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: aba18bbb-7972-4072-a1c9-e279d4359948 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",QUERY 57 29-1,text,false,,1716,0,1,28,null,0,0,5387
+1575783203753,5859,query 56,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: a4fc800d-9a0c-419f-8e04-1ffaa5eb738f on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 56 28-1,text,false,,1716,0,1,27,null,0,0,5859
+1575783203752,6252,query 55,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 06891818-4959-457b-9c4d-56e2d915cb11 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 55 27-1,text,false,,1716,0,1,26,null,0,0,6252
+1575783203752,6613,Oracle 53,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: bf45db63-fd9f-46b7-8ec8-8155a22ed8e1 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 53 26-1,text,false,,1716,0,1,25,null,0,0,6613
+1575783203752,6938,Query 52,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 03674b29-8788-476b-b89b-9804ba87bf8c on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 52 25-1,text,false,,1716,0,1,24,null,0,0,6938
+1575783203751,7246,Query 51,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 17d74c82-2072-4b69-bce2-e389a1629e46 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 51 24-1,text,false,,1716,0,1,23,null,0,0,7246
+1575783203751,7491,query 50,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: da2fd800-b204-432f-8701-e3263730916c on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",QUERY 50 23-1,text,false,,1716,0,1,22,null,0,0,7491
+1575783203751,7752,query 49,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 59d4a57a-7afb-4cfe-ac07-d1f36f24111b on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 49 22-1,text,false,,1716,0,2,53,null,0,0,7752
+1575783203751,8206,Query 47,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 7addcfae-2057-4305-b42e-ccabb183bfaa on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 47 21-1,text,false,,1716,0,2,52,null,0,0,8206
+1575783203750,8656,query 46,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: fdb7bc63-612b-4ac8-aa19-92be092cf2c7 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",QUERY 46 20-1,text,false,,1716,0,2,51,null,0,0,8656
+1575783203750,9068,query 45,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 4251abed-619f-416e-ba9c-49c523c656e2 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 45 19-1,text,false,,1716,0,2,50,null,0,0,9068
+1575783203750,9442,Query 43,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: a70445de-99f6-487d-ab43-8bbf9efb0d38 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 43 18-1,text,false,,1716,0,2,49,null,0,0,9442
+1575783203749,9791,Oracle 42,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 99bb2ce8-c792-4d2e-8b60-a953661d7d4e on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 42 17-1,text,false,,1716,0,2,48,null,0,0,9791
+1575783203749,10266,Query 33,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 5130d91a-df0a-4117-9d75-9fb6fd03614e on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 33 16-1,text,false,,1716,0,2,47,null,0,0,10266
+1575783203749,10588,query 31,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: ebaea2c6-1ebc-4f1f-95ab-f5a5e767eb2d on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 31 15-1,text,false,,1716,0,2,46,null,0,0,10588
+1575783203748,10935,query 30,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 6d3b3846-2011-4f9f-8f2c-948ea73722df on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 30 14-1,text,false,,1716,0,2,45,null,0,0,10935
+1575783203748,11196,Query 29,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 7a420b96-1b44-44ea-8683-c0ee12ff1eaa on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 29 13-1,text,false,,1716,0,2,44,null,0,0,11196
+1575783203748,11628,Oracle 28,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: e55c770d-1392-4e31-acc6-1d90ebb0ab97 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 28 12-1,text,false,,1716,0,2,43,null,0,0,11628
+1575783203747,12062,Query 26,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: c2abef47-233d-458d-bce9-97ee57330fde on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 26 11-1,text,false,,1716,0,2,42,null,0,0,12062
+1575783203747,12454,query 25,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 346eb4f7-f13f-42a7-b8d5-829b8d6e5f5e on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",QUERY 25 10-1,text,false,,1716,0,2,41,null,0,0,12454
+1575783203747,12831,Query 19,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 769978a9-21dc-4dc3-8b6d-fd6d4b8d207c on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 19 9-1,text,false,,1716,0,2,40,null,0,0,12831
+1575783203747,13182,query 17,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 75678340-288a-4454-a771-79d7e4bc680c on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 17 8-1,text,false,,1716,0,2,39,null,0,0,13182
+1575783203746,13585,Query 15,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 143905d8-8a12-4d21-b994-d7e7323e29cc on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 15 7-1,text,false,,1716,0,2,38,null,0,0,13585
+1575783203746,13995,query 11,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 76d5dd63-b06f-4ea9-8eb2-cf114069b8b5 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",QUERY 11 6-1,text,false,,1716,0,2,37,null,0,0,13995
+1575783203746,14391,query 9,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 7783b814-a875-40ba-8373-320ed13027ad on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 9 5-1,text,false,,1716,0,2,36,null,0,0,14391
+1575783203745,14765,Query 7,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 62edfeae-a979-4a51-84dd-b04c670e8652 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 7 4-1,text,false,,1716,0,2,35,null,0,0,14765
+1575783203745,15166,Oracle 4,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: d68f02f7-ea81-4607-91cc-22f774fcfcd2 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 4 3-1,text,false,,1716,0,3,66,null,0,0,15166
+1575783203744,15572,Query 3,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 507e5131-cd5b-4fc3-8db8-28b7318d3e8c on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 3 2-1,text,false,,1716,0,3,65,null,0,0,15572
+1575783218755,963,query 60,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: c0f2e76a-3a5c-4233-8b6d-508427d5a076 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 60 31-3,text,false,,1716,0,2,64,null,0,0,963
+1575783218755,1349,query 61,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 53f3a454-718c-42d6-9a63-838887e80a58 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",QUERY 61 32-3,text,false,,1716,0,2,63,null,0,0,1349
+1575783218753,1725,Query 51,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: b224f99c-eb68-43f4-b57a-fb9f01a462cc on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 51 24-3,text,false,,1716,0,2,62,null,0,0,1725
+1575783218753,2113,query 56,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 5220d901-2d51-45da-ba07-868e57bc88fd on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 56 28-3,text,false,,1716,0,2,61,null,0,0,2113
+1575783218753,2519,Oracle 53,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 3b0edbfe-1ec6-484c-9df9-52ff76e946f5 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 53 26-3,text,false,,1716,0,2,60,null,0,0,2519
+1575783218753,2901,Query 52,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: e7249af5-2dde-4306-8cfa-6ae985f53be8 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 52 25-3,text,false,,1716,0,2,59,null,0,0,2901
+1575783218753,3284,query 59,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 28713028-52a6-4b55-a628-d8778dddf8f5 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 59 30-3,text,false,,1716,0,2,58,null,0,0,3284
+1575783218753,3626,query 57,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 53f13e04-e5eb-4cc9-b9d5-37164b0ec526 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",QUERY 57 29-3,text,false,,1716,0,2,57,null,0,0,3626
+1575783218753,3941,query 55,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: fe064ad7-e0a4-41f2-b2c9-ccde0267147b on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 55 27-3,text,false,,1716,0,2,56,null,0,0,3941
+1575783218751,4248,query 50,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 8f89ef47-8f29-45d6-811e-1e4ade2177b8 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",QUERY 50 23-3,text,false,,1716,0,2,55,null,0,0,4248
+1575783218751,4649,query 49,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 0a75838d-4985-484c-9deb-bf90e963d38e on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 49 22-3,text,false,,1716,0,2,54,null,0,0,4649
+1575783218751,5033,Query 47,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 43a3aa44-8fdc-46f1-bf4f-d1a4ff33d50c on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 47 21-3,text,false,,1716,0,2,53,null,0,0,5033
+1575783218751,5407,query 45,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 118a5bc6-e4e3-4211-86d0-aef6ff646285 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 45 19-3,text,false,,1716,0,2,52,null,0,0,5407
+1575783218750,5744,query 46,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 2e07573b-f62f-424d-b084-dc91ea4b2509 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",QUERY 46 20-3,text,false,,1716,0,2,51,null,0,0,5744
+1575783218749,5939,Query 43,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 0af58489-717d-4c24-ac64-33474fc9045a on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 43 18-3,text,false,,1716,0,2,50,null,0,0,5939
+1575783218749,6123,query 30,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: b8668d25-8f59-4b11-8e96-778925a622bb on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 30 14-3,text,false,,1716,0,2,49,null,0,0,6123
+1575783218749,6410,Oracle 42,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: fbb5812b-96f7-4592-89ce-d1e572640344 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 42 17-3,text,false,,1716,0,2,48,null,0,0,6410
+1575783218749,6788,query 31,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 3525bb89-168e-4092-8bda-934f09a65909 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 31 15-3,text,false,,1716,0,2,47,null,0,0,6788
+1575783218749,7153,Query 33,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 4f8ee0c7-b241-4bd3-a1f9-733dc9ef24fd on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 33 16-3,text,false,,1716,0,2,46,null,0,0,7153
+1575783218749,7529,Query 26,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 0d8c8ece-9f07-4626-a403-e84dd325ab20 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 26 11-3,text,false,,1716,0,3,77,null,0,0,7529
+1575783218749,7916,Query 3,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: ccc66c98-2996-45e6-a42c-036b8ac9ec35 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 3 2-3,text,false,,1716,0,3,76,null,0,0,7916
+1575783218749,8290,query 25,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 9afa6e66-0118-4898-80c2-deeeeea0bc6e on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",QUERY 25 10-3,text,false,,1716,0,3,75,null,0,0,8290
+1575783218749,8644,Query 15,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 709ee41b-eeb4-4b7e-be1f-dd783ba75e04 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 15 7-3,text,false,,1716,0,3,74,null,0,0,8644
+1575783218749,9029,Oracle 28,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 76147395-1da4-4ceb-afc1-58c9ac679b43 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 28 12-3,text,false,,1716,0,3,73,null,0,0,9029
+1575783218749,9380,query 9,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 8cc1c975-8ea9-4c34-942f-5e0deeda2a6e on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 9 5-3,text,false,,1716,0,3,72,null,0,0,9380
+1575783218749,9711,Query 19,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: be21100c-c599-4083-8833-70ee1f17a4d0 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 19 9-3,text,false,,1716,0,3,71,null,0,0,9711
+1575783218749,10021,Query 29,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 27af37d7-032c-4a08-bc4e-bd1d1ce83466 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 29 13-3,text,false,,1716,0,3,70,null,0,0,10021
+1575783218749,10321,query 17,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: e553b0c3-843e-48bf-a13d-14df4c88d665 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 17 8-3,text,false,,1716,0,3,69,null,0,0,10321
+1575783218749,10628,Query 7,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: ba33b89e-fcec-4b38-adce-1ddcb130694f on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 7 4-3,text,false,,1716,0,3,68,null,0,0,10628
+1575783218749,10995,query 11,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: de8c606c-182a-41db-b26e-25d0db2513a0 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",QUERY 11 6-3,text,false,,1716,0,3,67,null,0,0,10995
+1575783218749,11380,Oracle 4,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 8193b0b4-3eb3-4e1b-affc-1bbc623c4db1 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 4 3-3,text,false,,1716,0,3,66,null,0,0,11380
+1575783218744,11763,Query 1,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: df2454fb-9909-48a9-93ad-8a46e9fd115a on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 1 1-3,text,false,,1716,0,3,65,null,0,0,11763
+1575783211254,19600,query 60,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: a191ed73-8173-4bf2-b8fe-6169cf435786 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 60 31-2,text,false,,1716,0,2,64,null,0,0,19600
+1575783211254,20010,query 61,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 27070fce-b605-489b-85c5-66dcb4483428 on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",QUERY 61 32-2,text,false,,1716,0,2,63,null,0,0,20010
+1575783211253,20393,query 59,null 0,"java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: SYSTEM ERROR: IllegalStateException: Error: No executors are available
+
+
+[Error Id: 9715b99b-1119-435e-ab94-84457ab10e3a on dremio-c1.local:31010]
+
+  (com.dremio.exec.work.foreman.ForemanException) Unexpected exception during fragment initialization: java.lang.IllegalStateException: Error: No executors are available
+    com.dremio.exec.work.foreman.AttemptManager.run():371
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.util.concurrent.ExecutionException) java.lang.IllegalStateException: Error: No executors are available
+    java.util.concurrent.CompletableFuture.reportGet():357
+    java.util.concurrent.CompletableFuture.get():1908
+    com.dremio.exec.work.foreman.AttemptManager.run():344
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+  Caused By (java.lang.IllegalStateException) Error: No executors are available
+    com.google.common.base.Preconditions.checkState():444
+    com.dremio.exec.planner.fragment.SimpleParallelizer.<init>():115
+    com.dremio.exec.planner.sql.handlers.commands.ExecutionPlanCreator.getParallelizationInfo():69
+    com.dremio.exec.planner.sql.handlers.commands.AsyncCommand.planExecution():86
+    com.dremio.exec.work.foreman.AttemptManager.lambda$run$1():342
+    com.dremio.service.commandpool.CommandWrapper.run():62
+    java.util.concurrent.ThreadPoolExecutor.runWorker():1149
+    java.util.concurrent.ThreadPoolExecutor$Worker.run():624
+    java.lang.Thread.run():748
+)",Query 59 30-2,text,false,,1716,0,2,62,null,0,0,20393
+1575783211253,20881,query 57,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (exception while executing query: Interrupted),QUERY 57 29-2,text,false,,86,0,2,61,null,0,0,20881
+1575783211253,20884,query 55,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 55 27-2,text,false,,144,0,2,60,null,0,0,20884
+1575783211252,20889,query 56,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 56 28-2,text,false,,144,0,2,59,null,0,0,20889
+1575783211252,20892,Query 52,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 52 25-2,text,false,,144,0,2,58,null,0,0,20892
+1575783211252,20898,Oracle 53,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 53 26-2,text,false,,144,0,2,57,null,0,0,20898
+1575783211251,20902,query 45,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 45 19-2,text,false,,144,0,2,56,null,0,0,20902
+1575783211251,20907,query 46,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),QUERY 46 20-2,text,false,,144,0,2,55,null,0,0,20907
+1575783211251,20911,query 49,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 49 22-2,text,false,,144,0,2,54,null,0,0,20911
+1575783211251,20914,Query 51,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 51 24-2,text,false,,144,0,2,53,null,0,0,20914
+1575783211251,20918,query 50,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),QUERY 50 23-2,text,false,,144,0,2,52,null,0,0,20918
+1575783211251,20922,Query 47,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 47 21-2,text,false,,144,0,2,51,null,0,0,20922
+1575783211250,20926,Oracle 42,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 42 17-2,text,false,,144,0,2,50,null,0,0,20926
+1575783211250,20930,query 30,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 30 14-2,text,false,,144,0,2,49,null,0,0,20930
+1575783211250,20933,Query 19,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 19 9-2,text,false,,144,0,2,48,null,0,0,20933
+1575783211250,20937,Query 43,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 43 18-2,text,false,,144,0,2,47,null,0,0,20937
+1575783211250,20941,Query 26,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 26 11-2,text,false,,144,0,2,46,null,0,0,20941
+1575783211250,20945,Oracle 28,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 28 12-2,text,false,,144,0,2,45,null,0,0,20945
+1575783211250,20948,query 11,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),QUERY 11 6-2,text,false,,144,0,2,44,null,0,0,20948
+1575783211250,20952,Query 15,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 15 7-2,text,false,,144,0,2,43,null,0,0,20952
+1575783211250,20956,query 9,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 9 5-2,text,false,,144,0,2,42,null,0,0,20956
+1575783211250,20959,Oracle 4,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 4 3-2,text,false,,144,0,2,41,null,0,0,20959
+1575783211249,20963,Query 33,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 33 16-2,text,false,,144,0,2,40,null,0,0,20963
+1575783211249,20967,query 31,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 31 15-2,text,false,,144,0,2,39,null,0,0,20967
+1575783211249,20970,Query 29,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 29 13-2,text,false,,144,0,2,38,null,0,0,20970
+1575783211247,20975,query 25,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),QUERY 25 10-2,text,false,,144,0,2,37,null,0,0,20975
+1575783211247,20979,Query 7,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 7 4-2,text,false,,144,0,2,36,null,0,0,20979
+1575783211247,20983,query 17,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 17 8-2,text,false,,144,0,2,35,null,0,0,20983
+1575783211244,20990,Query 3,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 3 2-2,text,false,,144,0,2,34,null,0,0,20990
+1575783211244,20993,Query 1,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 1 1-2,text,false,,144,0,2,33,null,0,0,20993
+1575783226255,5986,query 61,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),QUERY 61 32-4,text,false,,144,0,1,32,null,0,0,5986
+1575783226254,5990,query 60,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 60 31-4,text,false,,144,0,1,31,null,0,0,5990
+1575783226254,5994,query 55,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 55 27-4,text,false,,144,0,1,30,null,0,0,5994
+1575783226254,5997,Query 47,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 47 21-4,text,false,,144,0,1,29,null,0,0,5997
+1575783226254,6000,query 59,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 59 30-4,text,false,,144,0,1,28,null,0,0,6000
+1575783226254,6004,query 57,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),QUERY 57 29-4,text,false,,144,0,1,27,null,0,0,6004
+1575783226254,6008,query 50,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),QUERY 50 23-4,text,false,,144,0,1,26,null,0,0,6008
+1575783226254,6012,Oracle 53,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 53 26-4,text,false,,144,0,1,25,null,0,0,6012
+1575783226254,6015,query 56,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 56 28-4,text,false,,144,0,1,24,null,0,0,6015
+1575783226254,6018,Query 52,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 52 25-4,text,false,,144,0,1,23,null,0,0,6018
+1575783226254,6022,query 49,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 49 22-4,text,false,,144,0,1,22,null,0,0,6022
+1575783226254,6025,Query 51,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 51 24-4,text,false,,144,0,1,21,null,0,0,6025
+1575783226254,6029,query 46,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),QUERY 46 20-4,text,false,,144,0,1,20,null,0,0,6029
+1575783226252,6034,query 25,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),QUERY 25 10-4,text,false,,144,0,1,19,null,0,0,6034
+1575783226252,6038,query 11,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),QUERY 11 6-4,text,false,,144,0,1,18,null,0,0,6038
+1575783226251,6042,Query 26,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 26 11-4,text,false,,144,0,1,17,null,0,0,6042
+1575783226251,6046,Query 19,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 19 9-4,text,false,,144,0,1,16,null,0,0,6046
+1575783226251,6049,Query 15,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 15 7-4,text,false,,144,0,1,15,null,0,0,6049
+1575783226251,6052,Oracle 28,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 28 12-4,text,false,,144,0,1,14,null,0,0,6052
+1575783226251,6056,Query 29,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 29 13-4,text,false,,144,0,1,13,null,0,0,6056
+1575783226251,6059,Query 43,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 43 18-4,text,false,,144,0,1,12,null,0,0,6059
+1575783226251,6063,query 45,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 45 19-4,text,false,,144,0,1,11,null,0,0,6063
+1575783226251,6066,query 30,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 30 14-4,text,false,,144,0,1,10,null,0,0,6066
+1575783226251,6069,query 31,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 31 15-4,text,false,,144,0,1,9,null,0,0,6069
+1575783226251,6073,Oracle 42,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 42 17-4,text,false,,144,0,1,8,null,0,0,6073
+1575783226251,6076,Query 33,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 33 16-4,text,false,,144,0,1,7,null,0,0,6076
+1575783226251,6080,query 17,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 17 8-4,text,false,,144,0,1,6,null,0,0,6080
+1575783226246,6088,Oracle 4,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 4 3-4,text,false,,144,0,1,5,null,0,0,6088
+1575783226246,6092,query 9,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 9 5-4,text,false,,144,0,1,4,null,0,0,6092
+1575783226246,6096,Query 7,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 7 4-4,text,false,,144,0,1,3,null,0,0,6096
+1575783226245,6100,Query 3,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 3 2-4,text,false,,144,0,1,2,null,0,0,6100
+1575783226244,6105,Query 1,null 0,java.sql.SQLException: Cannot create PoolableConnectionFactory (Failure in connecting to Dremio: cdjd.com.dremio.exec.rpc.RpcException: java.lang.InterruptedException),Query 1 1-4,text,false,,144,0,1,1,null,0,0,6105
