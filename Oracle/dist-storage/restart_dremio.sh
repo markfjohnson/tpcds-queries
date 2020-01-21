@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+echo "Stopping Dremio"
+ansible dremio -m shell -a "systemctl stop dremio"
+echo "Changing dist.path"
+ansible dremio-coord -m copy -a "src=dremio.dremios3.conf.coord dest=/opt/dremio/conf/dremio.conf"
+ansible dremio-exec -m copy -a "src=dremio.dremios3.conf.exec dest=/opt/dremio/conf/dremio.conf"
+#ansible dremio-coord -m copy -a "src=dremio.s3a.conf.coord dest=/opt/dremio/conf/dremio.conf"
+#ansible dremio-exec -m copy -a "src=dremio.s3a.conf.exec dest=/opt/dremio/conf/dremio.conf"
+#ansible dremio-coord -m copy -a "src=dremio.hdp.conf.coord dest=/opt/dremio/conf/dremio.conf"
+#ansible dremio-exec -m copy -a "src=dremio.hdp.conf.exec dest=/opt/dremio/conf/dremio.conf"
+echo "Cleaning up dremio workspace"
+ansible dremio -m shell -a "chown -R dremio:dremio /opt/dremio"
+ansible dremio -m shell -a "rm -rf /opt/dremio/run/*"
+ansible dremio -m shell -a "rm -rf /opt/dremio/log/*"
+ansible dremio -m shell -a "rm -rf /opt/dremio/data/*"
+echo "Starting Dremio"
+ansible dremio -m shell -a "systemctl start dremio"
+echo "Waiting for dremio to start"
+sleep 45
+echo "Verify no errors"
+ansible dremio -m shell -a "cat /opt/dremio/log/server.log | grep ERR"
+echo "Show running dremio nodes"
+ansible dremio -m shell -a "systemctl status dremio | grep running"
+echo "Verify Dremio coordinator up and running"
+ansible dremio -m shell -a "cat /opt/dremio/log/server.log| grep 9047"
+echo "Verify executors connected to cluster"
+ansible dremio -m shell -a "cat /opt/dremio/log/server.log| grep dremio-c1"
+#jconsole dremio-c1:9010 dremio-e1:9010 dremio-e2:9010 dremio-e3:9010 dremio-e4:9010
+
+#
+#ansible dremio -m shell -a "grep DREMIO_MAX /opt/dremio/conf/dremio-env"
+#ansible dremio -m shell -a "sed -i 's/10000/6000/g' /opt/dremio/conf/dremio-env"

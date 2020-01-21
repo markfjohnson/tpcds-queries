@@ -1,0 +1,49 @@
+[Unit]
+Description=Minio
+Documentation=https://docs.minio.io
+Wants=network-online.target
+After=network-online.target
+AssertFileIsExecutable=/opt/minio/bin/minio
+
+[Service]
+WorkingDirectory=/opt/minio
+StandardOutput=file:/var/log/minio.log
+StandardError=file:/var/log/minio.err
+Environmet=MINIO_ACCESS_KEY="AKaHEgQ4II0S7BjT6DjAUDA4BX"
+Environmet=MINIO_SECRET_KEY="SKFzHq5iDoQgF7gyPYRFhzNMYSvY6ZFMpH"
+SyslogIdentifier=minio
+StandardOutput=syslog
+StandardError=syslog
+
+User=minio
+Group=minio
+
+PermissionsStartOnly=true
+
+EnvironmentFile=/opt/minio/minio.conf
+#ExecStartPre=/bin/bash -c "if [ -z \"${MINIO_VOLUMES}\" ]; then echo \"Variable MINIO_VOLUMES not set in /opt/minio/minio.conf\"; exit 1; fi"
+
+ExecStart=/opt/minio/bin/minio server http://minio1:9000/opt/minio/data http://minio2:9000/opt/minio/data http://minio3:9000/opt/minio/data http://minio4:9000/opt/minio/data
+
+# Let systemd restart this service only if it has ended with the clean exit code or signal.
+Restart=on-success
+
+StandardOutput=journal
+StandardError=inherit
+
+# Specifies the maximum file descriptor number that can be opened by this process
+LimitNOFILE=65536
+
+# Disable timeout logic and wait until process is stopped
+TimeoutStopSec=0
+
+# SIGTERM signal is used to stop Minio
+KillSignal=SIGTERM
+
+SendSIGKILL=no
+
+SuccessExitStatus=0
+
+[Install]
+WantedBy=multi-user.target
+

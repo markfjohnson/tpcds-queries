@@ -1,0 +1,26 @@
+---
+- hosts: minio
+  remote_user: root
+  tasks:
+  - name: Add Dremio user
+    user: name="dremio" group="dremio" groups='wheel' password=dremio123 generate_ssh_key=yes state=present
+  - name: Add Minio user
+    user: name="minio" create_home=yes home=/opt/minio password=minio123 generate_ssh_key=yes state=present
+  - name: Setup minio directories
+    file: path={{item}} state=directory owner=minio group=minio
+    with_items:
+      - "/opt/minio"
+      - "/opt/minio/bin"
+      - "/opt/minio/data"
+#  - name: Install minio binary
+#    get_url: url="https://dl.minio.io/server/minio/release/linux-amd64/minio" dest=/opt/minio/bin owner=minio group=minio mode=0755
+  - name: Make minio executable
+    file: path=/opt/minio/bin/minio owner=minio group=minio mode=0755
+  - name: Create and copy the minio config file
+    template: src=conf/minio.conf dest=/opt/minio owner=minio group=minio
+  - name: Setup Minio service definition
+    template: src=conf/minio.service dest=/etc/systemd/system/minio.service
+  - name: Setup the minio service
+    systemd: name=minio state=started enabled=yes daemon_reload=yes
+
+

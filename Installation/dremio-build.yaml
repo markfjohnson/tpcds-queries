@@ -1,0 +1,57 @@
+---
+- hosts: dremio
+  vars:
+    dremio_rpm: "dremio-enterprise-4.1.0-201912030136020081_49feeb75_1.noarch.rpm"
+  remote_user: root
+  tasks:
+  - name: Copy dremio RPM to server
+    copy: src=src/{{dremio_rpm}} dest=/root
+  - name: Install Dremio RPM from server
+    yum: name=/root/{{dremio_rpm}} state=present
+  - name: Add Dremio user
+    user: name="dremio" group="dremio" password=dremio123 generate_ssh_key=yes state=present
+  - name: set dremio permissions
+    file: path={{item}} state=directory owner=dremio group=dremio
+    with_items:
+    - "/var/log/dremio"
+    - "/var/run/dremio"
+    - "/var/lib/dremio"
+  - name: Set dremio directory permissions
+    shell: "chown -R dremio:dremio /opt/dremio"
+
+- hosts: dremio-coord
+  remote_user: root
+  vars:
+    direct_mem_coord: 12000
+    heap_mem_coord: 16000
+  tasks:
+  - name: Setup Dremio Configuration
+    template: src=conf/dremio.conf.coord dest=/opt/dremio/conf/dremio.conf force=yes owner=dremio group=dremio
+  - name: Setup Dremio env
+    template: src=conf/dremio-env-coord dest=/opt/dremio/conf/dremio-env force=yes owner=dremio group=dremio
+
+
+- hosts: dremio-exec
+  remote_user: root
+  vars:
+    direct_mem_exec: 31800
+    heap_mem_exec: 8200
+  tasks:
+  - name: Setup Dremio Configuration
+    template: src=conf/dremio.conf.exec dest=/opt/dremio/conf/dremio.conf force=yes owner=dremio group=dremio
+  - name: Setup Dremio env
+    template: src=conf/dremio-env-exec dest=/opt/dremio/conf/dremio-env force=yes owner=dremio group=dremio
+  - name: Setup cloud cache directories
+    file: path={{item}} state=directory owner=dremio group=dremio
+    with_items:
+    - "/mnt/cachemanagerdisk/db"
+    - "/mnt/cachemanagerdisk/dir1"
+    - "/mnt/cachemanagerdisk/dir2"
+    - "/mnt/cachemanagerdisk/dir3"
+    - "/mnt/cachemanagerdisk/dir4"
+
+- hosts: dremio
+  remote_user: root
+  tasks:
+    - name: Enable Dremio and start
+      service: name=dremio state=started enabled=yes

@@ -8,12 +8,13 @@ pct clone 100 205 --hostname "hdp5.local" --full true  --description "HDP agent"
 pct clone 100 206 --hostname "hdp6.local" --full true  --description "HDP agent" --storage "ssd_drive2tb"
 
 # TODO add static network config
-pct set 200 -onboot 1 -cores 4 -memory 8192
-pct set 201 -onboot 1 -cores 4 -memory 20000
-pct set 202 -onboot 1 -cores 4 -memory 20000
-pct set 203 -onboot 1 -cores 4 -memory 20000
-pct set 204 -onboot 1 -cores 4 -memory 20000
-pct set 205 -onboot 1 -cores 4 -memory 20000
+pct set 200 -onboot 1 -cores 4 -memory 8192  -net0 name=eth0,bridge=vmbr0,gw=192.168.2.1,ip=192.168.2.50/24,ip6=dhcp,type=veth
+pct set 201 -onboot 1 -cores 4 -memory 20000  -net0 name=eth0,bridge=vmbr0,gw=192.168.2.1,ip=192.168.2.51/24,ip6=dhcp,type=veth
+pct set 202 -onboot 1 -cores 4 -memory 20000  -net0 name=eth0,bridge=vmbr0,gw=192.168.2.1,ip=192.168.2.52/24,ip6=dhcp,type=veth
+pct set 203 -onboot 1 -cores 4 -memory 20000  -net0 name=eth0,bridge=vmbr0,gw=192.168.2.1,ip=192.168.2.53/24,ip6=dhcp,type=veth
+pct set 204 -onboot 1 -cores 4 -memory 20000  -net0 name=eth0,bridge=vmbr0,gw=192.168.2.1,ip=192.168.2.54/24,ip6=dhcp,type=veth
+pct set 205 -onboot 1 -cores 4 -memory 20000  -net0 name=eth0,bridge=vmbr0,gw=192.168.2.1,ip=192.168.2.55/24,ip6=dhcp,type=veth
+
 pct set 206 -onboot 1 -cores 4 -memory 20000
 
 # ct resize 201 vm-201-disk-0 300

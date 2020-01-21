@@ -51,14 +51,14 @@
 #
 # Default to 4096 for server
 #
-DREMIO_MAX_HEAP_MEMORY_SIZE_MB= 18022.18 
+DREMIO_MAX_HEAP_MEMORY_SIZE_MB={{heap_mem_coord}}
 
 #
 # Max direct memory size (in MB) for the Dremio process
 #
 # Default to 8192 for server
 #
-DREMIO_MAX_DIRECT_MEMORY_SIZE_MB=10000
+DREMIO_MAX_DIRECT_MEMORY_SIZE_MB={{direct_mem_coord}}
 
 #
 # Max permanent generation memory size (in MB) for the Dremio process

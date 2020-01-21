@@ -17,24 +17,17 @@
 paths: {
   # the local path for dremio to store data.
   local: ${DREMIO_HOME}"/data"
-#  dist: "s3a:///dremio-dist-s3a/"
-  dist: "hdfs://hdp1.local:8020/dremio"
-#  dist: "dremioS3:///dremio-dist2/"
-
+  #dist: "hdfs://hdp1.local:8020/dremio"
+  #dist: "dremioS3:///dremio-dist/"
+   dist: "s3a:///dremio-dist/"
+  # the distributed path Dremio data including job results, downloads, uploads, etc
+  #dist: "pdfs://"${paths.local}"/pdfs"
 }
 
 services: {
-  coordinator.enabled: true,
-  coordinator.master.enabled: true,
-  executor.enabled: false, 
+  coordinator.enabled: false,
+  coordinator.master.enabled: false,
+  executor.enabled: true, 
   node-tag: big_cluster
 }
 zookeeper: "dremio-c1:2181"
-
-debug: {
-#  # Enable caching for distributed storage, it is turned off by default
-  dist.caching.enabled: true,
-  # Max percent of total available cache space to use when possible for distributed storage
-  dist.max.cache.space.percent: 100
-}
-

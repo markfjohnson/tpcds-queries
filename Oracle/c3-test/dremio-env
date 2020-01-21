@@ -44,23 +44,21 @@
 # If one is set, the other is calculated as difference
 # of max memory and the one that is set.
 #
-#DREMIO_MAX_MEMORY_SIZE_MB=13900
+DREMIO_MAX_MEMORY_SIZE_MB=13900
 
 #
 # Max heap memory size (in MB) for the Dremio process
 #
 # Default to 4096 for server
 #
-DREMIO_MAX_HEAP_MEMORY_SIZE_MB={{heap_mem_exec}}
+DREMIO_MAX_HEAP_MEMORY_SIZE_MB=12000
 
 #
 # Max direct memory size (in MB) for the Dremio process
 #
 # Default to 8192 for server
 #
-DREMIO_MAX_DIRECT_MEMORY_SIZE_MB={{direct_mem_exec}}
-# Show out of memory on query 17 in initial set
-#DREMIO_MAX_DIRECT_MEMORY_SIZE_MB=1600
+#DREMIO_MAX_DIRECT_MEMORY_SIZE_MB=8192
 
 #
 # Max permanent generation memory size (in MB) for the Dremio process
