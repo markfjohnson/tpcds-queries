@@ -2,4 +2,9 @@
 *.json
 *.jzon
 *.csv
+*.retry
+*.tar.gz
+*.jtl
+*.xls
+*.jzon
 
