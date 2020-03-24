@@ -9,8 +9,8 @@ AssertFileIsExecutable=/opt/minio/bin/minio
 WorkingDirectory=/opt/minio
 StandardOutput=file:/var/log/minio.log
 StandardError=file:/var/log/minio.err
-Environmet=MINIO_ACCESS_KEY="AKaHEgQ4II0S7BjT6DjAUDA4BX"
-Environmet=MINIO_SECRET_KEY="SKFzHq5iDoQgF7gyPYRFhzNMYSvY6ZFMpH"
+Environmet=MINIO_ACCESS_KEY="AKaHEgQ4II0S7BjT6DjAUDA4BX" # Changeme
+Environmet=MINIO_SECRET_KEY="SKFzHq5iDoQgF7gyPYRFhzNMYSvY6ZFMpH" # Changeme
 SyslogIdentifier=minio
 StandardOutput=syslog
 StandardError=syslog
