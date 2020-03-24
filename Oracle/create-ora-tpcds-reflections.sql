@@ -1,4 +1,4 @@
-ALTER DATASET Oracle.SCOTT.customer_address
+ALTER DATASET "Oracle".SCOTT.customer_address
 CREATE RAW REFLECTION raw_customer_address
 USING
 DISPLAY (
@@ -16,9 +16,9 @@ DISPLAY (
     ca_gmt_offset,
     ca_location_type
 )
-LOCALSORT BY (ca_address_sk)
+LOCALSORT BY (ca_address_sk);
 
-ALTER DATASET Oracle.SCOTT.customer_address
+ALTER DATASET "Oracle".SCOTT.customer_address
 CREATE RAW REFLECTION raw_customer_address
 USING
 DISPLAY (
@@ -36,9 +36,9 @@ DISPLAY (
     ca_gmt_offset,
     ca_location_type
 )
-LOCALSORT BY (ca_address_sk)
+LOCALSORT BY (ca_address_sk);
 
-ALTER DATASET Oracle.SCOTT.customer_demographics
+ALTER DATASET "Oracle".SCOTT.customer_demographics
 CREATE RAW REFLECTION raw_customer_demographics
 USING
 DISPLAY (
@@ -52,9 +52,9 @@ DISPLAY (
     cd_dep_employed_count,
     cd_dep_college_count
 )
-LOCALSORT BY (cd_demo_sk)
+LOCALSORT BY (cd_demo_sk);
 
-ALTER DATASET Oracle.SCOTT.warehouse
+ALTER DATASET "Oracle".SCOTT.warehouse
 CREATE RAW REFLECTION raw_warehouse
 USING
 DISPLAY (
@@ -73,9 +73,9 @@ DISPLAY (
     w_country,
     w_gmt_offset
 )
-LOCALSORT BY (w_warehouse_sk)
+LOCALSORT BY (w_warehouse_sk);
 
-ALTER DATASET Oracle.SCOTT.reason
+ALTER DATASET "Oracle".SCOTT.reason
 CREATE RAW REFLECTION raw_reason
 USING
 DISPLAY (
@@ -83,9 +83,9 @@ DISPLAY (
     r_reason_id,
     r_reason_desc
 )
-LOCALSORT BY (r_reason_sk)
+LOCALSORT BY (r_reason_sk);
 
-ALTER DATASET Oracle.SCOTT.item
+ALTER DATASET "Oracle".SCOTT.item
 CREATE RAW REFLECTION raw_item
 USING
 DISPLAY (
@@ -112,9 +112,9 @@ DISPLAY (
     i_manager_id,
     i_product_name
 )
-LOCALSORT BY (i_item_sk)
+LOCALSORT BY (i_item_sk);
 
-ALTER DATASET Oracle.SCOTT.store
+ALTER DATASET "Oracle".SCOTT.store
 CREATE RAW REFLECTION raw_store
 USING
 DISPLAY (
@@ -148,9 +148,9 @@ DISPLAY (
     s_gmt_offset,
     s_tax_precentage
 )
-LOCALSORT BY (s_store_sk)
+LOCALSORT BY (s_store_sk);
 
-ALTER DATASET Oracle.SCOTT.call_center
+ALTER DATASET "Oracle".SCOTT.call_center
 CREATE RAW REFLECTION raw_call_center
 USING
 DISPLAY (
@@ -186,10 +186,10 @@ DISPLAY (
     cc_gmt_offset    ,
     cc_tax_percentage
 )
-LOCALSORT BY (cc_call_center_sk)
+LOCALSORT BY (cc_call_center_sk);
 
 
-ALTER DATASET Oracle.SCOTT.customer
+ALTER DATASET "Oracle".SCOTT.customer
 CREATE RAW REFLECTION raw_customer
 USING
 DISPLAY (
@@ -212,9 +212,9 @@ DISPLAY (
     c_email_address       ,
     c_last_review_date_sk
 )
-LOCALSORT BY (c_customer_sk)
+LOCALSORT BY (c_customer_sk);
 
-ALTER DATASET Oracle.SCOTT.web_site
+ALTER DATASET "Oracle".SCOTT.web_site
 CREATE RAW REFLECTION raw_web_site
 USING
 DISPLAY (
@@ -245,9 +245,9 @@ DISPLAY (
     web_gmt_offset       ,
     web_tax_percentage
 )
-LOCALSORT BY (web_site_sk)
+LOCALSORT BY (web_site_sk);
 
-ALTER DATASET Oracle.SCOTT.store_returns
+ALTER DATASET "Oracle".SCOTT.store_returns
 CREATE RAW REFLECTION raw_store_returns
 USING
 DISPLAY (
@@ -272,9 +272,9 @@ DISPLAY (
     sr_store_credit      ,
     sr_net_loss
 )
-LOCALSORT BY (sr_item_sk, sr_ticket_number)
+LOCALSORT BY (sr_item_sk, sr_ticket_number);
 
-ALTER DATASET Oracle.SCOTT.household_demographics
+ALTER DATASET "Oracle".SCOTT.household_demographics
 CREATE RAW REFLECTION raw_household_demographics
 USING
 DISPLAY (
@@ -284,9 +284,9 @@ DISPLAY (
     hd_dep_count      ,
     hd_vehicle_count
 )
-LOCALSORT BY (hd_demo_sk)
+LOCALSORT BY (hd_demo_sk);
 
-ALTER DATASET Oracle.SCOTT.web_page
+ALTER DATASET "Oracle".SCOTT.web_page
 CREATE RAW REFLECTION raw_web_page
 USING
 DISPLAY (
@@ -305,9 +305,9 @@ DISPLAY (
     wp_image_count       ,
     wp_max_ad_count
 )
-LOCALSORT BY (wp_web_page_sk)
+LOCALSORT BY (wp_web_page_sk);
 
-ALTER DATASET Oracle.SCOTT.promotion
+ALTER DATASET "Oracle".SCOTT.promotion
 CREATE RAW REFLECTION raw_promotion
 USING
 DISPLAY (
@@ -331,9 +331,9 @@ DISPLAY (
     p_purpose          ,
     p_discount_active
 )
-LOCALSORT BY (p_promo_sk)
+LOCALSORT BY (p_promo_sk);
 
-ALTER DATASET Oracle.SCOTT.catalog_page
+ALTER DATASET "Oracle".SCOTT.catalog_page
 CREATE RAW REFLECTION raw_catalog_page
 USING
 DISPLAY (
@@ -347,9 +347,9 @@ DISPLAY (
     cp_description         ,
     cp_type
 )
-LOCALSORT BY (cp_catalog_page_sk)
+LOCALSORT BY (cp_catalog_page_sk);
 
-ALTER DATASET Oracle.SCOTT.inventory
+ALTER DATASET "Oracle".SCOTT.inventory
 CREATE RAW REFLECTION raw_inventory
 USING
 DISPLAY (
@@ -358,9 +358,9 @@ DISPLAY (
     inv_warehouse_sk     ,
     inv_quantity_on_hand
 )
-LOCALSORT BY (inv_date_sk, inv_item_sk, inv_warehouse_sk)
+LOCALSORT BY (inv_date_sk, inv_item_sk, inv_warehouse_sk);
 
-ALTER DATASET Oracle.SCOTT.catalog_returns
+ALTER DATASET "Oracle".SCOTT.catalog_returns
 CREATE RAW REFLECTION raw_catalog_returns
 USING
 DISPLAY (
@@ -392,9 +392,9 @@ DISPLAY (
     cr_store_credit         ,
     cr_net_loss
 )
-LOCALSORT BY (cr_item_sk, cr_order_number)
+LOCALSORT BY (cr_item_sk, cr_order_number);
 
-ALTER DATASET Oracle.SCOTT.web_returns
+ALTER DATASET "Oracle".SCOTT.web_returns
 CREATE RAW REFLECTION raw_web_returns
 USING
 DISPLAY (
@@ -423,9 +423,9 @@ DISPLAY (
     wr_account_credit       ,
     wr_net_loss
 )
-LOCALSORT BY (wr_item_sk, wr_order_number)
+LOCALSORT BY (wr_item_sk, wr_order_number);
 
-ALTER DATASET Oracle.SCOTT.web_sales
+ALTER DATASET "Oracle".SCOTT.web_sales
 CREATE RAW REFLECTION raw_web_sales
 USING
 DISPLAY (
@@ -464,9 +464,9 @@ DISPLAY (
     ws_net_paid_inc_ship_tax ,
     ws_net_profit            
 )
-LOCALSORT BY (ws_item_sk, ws_order_number)
+LOCALSORT BY (ws_item_sk, ws_order_number);
 
-ALTER DATASET Oracle.SCOTT.catalog_sales
+ALTER DATASET "Oracle".SCOTT.catalog_sales
 CREATE RAW REFLECTION raw_catalog_sales
 USING
 DISPLAY (
@@ -505,9 +505,9 @@ DISPLAY (
     cs_net_paid_inc_ship_tax,
     cs_net_profit           
 )
-LOCALSORT BY (cs_item_sk, cs_order_number)
+LOCALSORT BY (cs_item_sk, cs_order_number);
 
-ALTER DATASET Oracle.SCOTT.store_sales
+ALTER DATASET "Oracle".SCOTT.store_sales
 CREATE RAW REFLECTION raw_store_sales
 USING
 DISPLAY (
@@ -535,5 +535,5 @@ DISPLAY (
     ss_net_paid_inc_tax   ,
     ss_net_profit         
 )
-LOCALSORT BY (ss_item_sk, ss_ticket_number)
+LOCALSORT BY (ss_item_sk, ss_ticket_number);
 

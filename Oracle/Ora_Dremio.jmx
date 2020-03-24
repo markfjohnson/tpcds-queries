@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.2.1">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Ora_Test_template" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">true</boolProp>
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
@@ -27,44 +27,9 @@
         <stringProp name="transactionIsolation">DEFAULT</stringProp>
         <stringProp name="trimInterval">60000</stringProp>
         <stringProp name="username">mark</stringProp>
+        <boolProp name="preinit">false</boolProp>
+        <stringProp name="connectionProperties"></stringProp>
       </JDBCDataSource>
-      <hashTree/>
-      <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
-        <boolProp name="ResultCollector.error_logging">false</boolProp>
-        <objProp>
-          <name>saveConfig</name>
-          <value class="SampleSaveConfiguration">
-            <time>true</time>
-            <latency>true</latency>
-            <timestamp>true</timestamp>
-            <success>true</success>
-            <label>true</label>
-            <code>true</code>
-            <message>true</message>
-            <threadName>true</threadName>
-            <dataType>true</dataType>
-            <encoding>false</encoding>
-            <assertions>true</assertions>
-            <subresults>true</subresults>
-            <responseData>false</responseData>
-            <samplerData>false</samplerData>
-            <xml>false</xml>
-            <fieldNames>true</fieldNames>
-            <responseHeaders>false</responseHeaders>
-            <requestHeaders>false</requestHeaders>
-            <responseDataOnError>false</responseDataOnError>
-            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-            <assertionsResultsToSave>0</assertionsResultsToSave>
-            <bytes>true</bytes>
-            <sentBytes>true</sentBytes>
-            <url>true</url>
-            <threadCounts>true</threadCounts>
-            <idleTime>true</idleTime>
-            <connectTime>true</connectTime>
-          </value>
-        </objProp>
-        <stringProp name="filename"></stringProp>
-      </ResultCollector>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Query 1" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -77,6 +42,7 @@
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 1" enabled="true">
@@ -111,6 +77,7 @@ limit 100;</stringProp>
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -125,6 +92,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 3" enabled="true">
@@ -156,6 +124,7 @@ select  dt.d_year
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">XXX </stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -170,6 +139,7 @@ select  dt.d_year
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 4" enabled="true">
@@ -298,6 +268,7 @@ limit 100;
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -312,6 +283,7 @@ limit 100;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 7" enabled="true">
@@ -343,6 +315,7 @@ select  i_item_id,
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -357,6 +330,7 @@ select  i_item_id,
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 9" enabled="true">
@@ -417,6 +391,7 @@ where r_reason_sk = 1
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -431,6 +406,7 @@ where r_reason_sk = 1
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 10" enabled="false">
@@ -501,6 +477,7 @@ limit 100;
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">JMeter out of memory</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -515,6 +492,7 @@ limit 100;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 11" enabled="true">
@@ -605,6 +583,7 @@ limit 100;</stringProp>
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -620,6 +599,7 @@ limit 100;</stringProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
         <stringProp name="TestPlan.comments">Disabled due to need to modify date math</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 12" enabled="false">
@@ -666,6 +646,7 @@ limit 100;
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Oracle 10 Count</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -680,6 +661,7 @@ limit 100;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 13" enabled="false">
@@ -742,6 +724,7 @@ select avg(ss_quantity)
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Seems to hang</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -756,6 +739,7 @@ select avg(ss_quantity)
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 14" enabled="false">
@@ -977,6 +961,7 @@ with  cross_items as
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Has Intersect statement</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -991,6 +976,7 @@ with  cross_items as
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 15" enabled="true">
@@ -1021,6 +1007,7 @@ select  ca_zip
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1035,6 +1022,7 @@ select  ca_zip
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 16" enabled="false">
@@ -1076,6 +1064,7 @@ limit 100;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Need to clean up date math</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1090,6 +1079,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 17" enabled="true">
@@ -1145,6 +1135,7 @@ limit 100;
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1159,6 +1150,7 @@ limit 100;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 18" enabled="false">
@@ -1204,6 +1196,7 @@ select  i_item_id,
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">dremio doesnt support  group by rollup </stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1219,6 +1212,7 @@ select  i_item_id,
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
         <stringProp name="TestPlan.comments">Disabled due to need to modify date math</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 19" enabled="true">
@@ -1253,6 +1247,7 @@ limit 100 ;</stringProp>
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1267,6 +1262,7 @@ limit 100 ;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 20" enabled="false">
@@ -1307,6 +1303,7 @@ limit 100;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Date refactoring</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1321,6 +1318,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 21" enabled="false">
@@ -1361,6 +1359,7 @@ select  *
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">REFACTOR DATES</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1375,6 +1374,7 @@ select  *
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 22" enabled="false">
@@ -1406,6 +1406,7 @@ limit 100;
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Dremio doesn&apos;t support ROLLUP, CUBE or GROUPING SETS functionality.</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1420,6 +1421,7 @@ limit 100;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 23" enabled="false">
@@ -1538,6 +1540,7 @@ with frequent_ss_items as
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Parsing error</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1552,6 +1555,7 @@ with frequent_ss_items as
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 24" enabled="false">
@@ -1669,6 +1673,7 @@ order by c_last_name
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Parsing error</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1683,6 +1688,7 @@ order by c_last_name
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 25" enabled="true">
@@ -1741,6 +1747,7 @@ select
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">dremio doesnt support  group by rollup </stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1755,6 +1762,7 @@ select
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 26" enabled="true">
@@ -1785,6 +1793,7 @@ select  i_item_id,
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1799,6 +1808,7 @@ select  i_item_id,
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 27" enabled="false">
@@ -1832,6 +1842,7 @@ select  i_item_id,
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Grouping, Grouping_ID, Group_ID are not supported.</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1846,6 +1857,7 @@ select  i_item_id,
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 28" enabled="true">
@@ -1910,6 +1922,7 @@ limit 100;
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">REFACTOR DATES</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1924,6 +1937,7 @@ limit 100;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 29" enabled="true">
@@ -1982,6 +1996,7 @@ select
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Dremio doesn&apos;t support ROLLUP, CUBE or GROUPING SETS functionality.</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1996,6 +2011,7 @@ select
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 30" enabled="true">
@@ -2037,6 +2053,7 @@ limit 100;
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2051,6 +2068,7 @@ limit 100;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 31" enabled="true">
@@ -2112,6 +2130,7 @@ with ss as
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2126,6 +2145,7 @@ with ss as
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 32" enabled="false">
@@ -2164,6 +2184,7 @@ limit 100;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Date refactoring</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2178,6 +2199,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 33" enabled="true">
@@ -2262,6 +2284,7 @@ limit 100;</stringProp>
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2276,6 +2299,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 34" enabled="false">
@@ -2318,6 +2342,7 @@ select c_last_name
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">unable to parse</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2332,6 +2357,7 @@ select c_last_name
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 35" enabled="false">
@@ -2400,6 +2426,7 @@ select
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Out of memory error</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2414,6 +2441,7 @@ select
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 36" enabled="false">
@@ -2455,6 +2483,7 @@ select
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Grouping, Grouping_ID, Group_ID are not supported.</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2469,6 +2498,7 @@ select
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 37" enabled="false">
@@ -2496,6 +2526,7 @@ select  i_item_id
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Date math issue</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2510,6 +2541,7 @@ select  i_item_id
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 38" enabled="false">
@@ -2543,6 +2575,7 @@ limit 100;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Inserset command</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2557,6 +2590,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 39" enabled="false">
@@ -2622,6 +2656,7 @@ order by inv1.w_warehouse_sk,inv1.i_item_sk,inv1.d_moy,inv1.mean,inv1.cov
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Parsing Problem</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2636,6 +2671,7 @@ order by inv1.w_warehouse_sk,inv1.i_item_sk,inv1.d_moy,inv1.mean,inv1.cov
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 40" enabled="false">
@@ -2674,6 +2710,7 @@ limit 100;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Date math</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2688,6 +2725,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 41" enabled="false">
@@ -2750,6 +2788,7 @@ select  distinct(i_product_name)
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Dremio doesn&apos;t currently support non-scalar sub-queries used in an expression</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2764,6 +2803,7 @@ select  distinct(i_product_name)
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 42" enabled="true">
@@ -2796,6 +2836,7 @@ limit 100 ;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Out of memory error</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2810,6 +2851,7 @@ limit 100 ;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 43" enabled="true">
@@ -2839,6 +2881,7 @@ select  s_store_name, s_store_id,
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2853,6 +2896,7 @@ select  s_store_name, s_store_id,
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 44" enabled="false">
@@ -2898,6 +2942,7 @@ limit 100;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Dremio doesn&apos;t currently support non-scalar sub-queries used in an expression</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2912,6 +2957,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 45" enabled="true">
@@ -2943,6 +2989,7 @@ select  ca_zip, ca_county, sum(ws_sales_price)
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Inserset command</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2957,6 +3004,7 @@ select  ca_zip, ca_county, sum(ws_sales_price)
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 46" enabled="true">
@@ -3001,6 +3049,7 @@ select  c_last_name
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3015,6 +3064,7 @@ select  c_last_name
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 47" enabled="true">
@@ -3075,6 +3125,7 @@ with v1 as(
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3089,6 +3140,7 @@ with v1 as(
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 48" enabled="false">
@@ -3165,6 +3217,7 @@ select sum (ss_quantity)
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3179,6 +3232,7 @@ select sum (ss_quantity)
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 49" enabled="true">
@@ -3318,6 +3372,7 @@ select  channel, item, return_ratio, return_rank, currency_rank from
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3332,6 +3387,7 @@ select  channel, item, return_ratio, return_rank, currency_rank from
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 50" enabled="true">
@@ -3401,6 +3457,7 @@ limit 100;
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3415,6 +3472,7 @@ limit 100;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 51" enabled="true">
@@ -3470,6 +3528,7 @@ limit 100;
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3484,6 +3543,7 @@ limit 100;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 52" enabled="true">
@@ -3516,6 +3576,7 @@ limit 100 ;
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3530,6 +3591,7 @@ limit 100 ;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 53" enabled="true">
@@ -3568,6 +3630,7 @@ limit 100;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Out of memory error</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3582,6 +3645,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 54" enabled="false">
@@ -3648,6 +3712,7 @@ with my_customers as (
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Dremio doesn&apos;t currently support non-scalar sub-queries used in an expression</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3662,6 +3727,7 @@ with my_customers as (
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 55" enabled="true">
@@ -3686,6 +3752,7 @@ limit 100 ;
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3700,6 +3767,7 @@ limit 100 ;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 56" enabled="true">
@@ -3779,6 +3847,7 @@ where i_color in (&apos;puff&apos;,&apos;slate&apos;,&apos;ivory&apos;))
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Inserset command</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3793,6 +3862,7 @@ where i_color in (&apos;puff&apos;,&apos;slate&apos;,&apos;ivory&apos;))
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 57" enabled="true">
@@ -3850,6 +3920,7 @@ with v1 as(
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3864,6 +3935,7 @@ with v1 as(
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 58" enabled="false">
@@ -3941,6 +4013,7 @@ with ss_items as
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Dremio doesn&apos;t currently support non-scalar sub-queries used in an expression
 </stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3955,6 +4028,7 @@ with ss_items as
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 59" enabled="true">
@@ -4008,6 +4082,7 @@ limit 100;</stringProp>
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -4022,6 +4097,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 60" enabled="true">
@@ -4109,6 +4185,7 @@ where i_category in (&apos;Shoes&apos;))
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -4123,6 +4200,7 @@ where i_category in (&apos;Shoes&apos;))
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 61" enabled="true">
@@ -4176,10 +4254,36 @@ limit 100;</stringProp>
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="ConcurrentUsers" elementType="Argument">
+            <stringProp name="Argument.name">ConcurrentUsers</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="LoopCount" elementType="Argument">
+            <stringProp name="Argument.name">LoopCount</stringProp>
+            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="RampUp" elementType="Argument">
+            <stringProp name="Argument.name">RampUp</stringProp>
+            <stringProp name="Argument.value">15</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="RowLimit" elementType="Argument">
+            <stringProp name="Argument.name">RowLimit</stringProp>
+            <stringProp name="Argument.value">100000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -4213,33 +4317,8 @@ limit 100;</stringProp>
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">Oracle-Reflection-summary.csv</stringProp>
+        <stringProp name="filename">Drem418_Ora_Dremio_1_User_5_Loops_Norefl.jtl</stringProp>
       </ResultCollector>
-      <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-        <collectionProp name="Arguments.arguments">
-          <elementProp name="ConcurrentUsers" elementType="Argument">
-            <stringProp name="Argument.name">ConcurrentUsers</stringProp>
-            <stringProp name="Argument.value">5</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="LoopCount" elementType="Argument">
-            <stringProp name="Argument.name">LoopCount</stringProp>
-            <stringProp name="Argument.value">5</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="RampUp" elementType="Argument">
-            <stringProp name="Argument.name">RampUp</stringProp>
-            <stringProp name="Argument.value">30</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="RowLimit" elementType="Argument">
-            <stringProp name="Argument.name">RowLimit</stringProp>
-            <stringProp name="Argument.value">100000a</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-        </collectionProp>
-      </Arguments>
       <hashTree/>
       <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
@@ -4278,7 +4357,7 @@ limit 100;</stringProp>
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results" enabled="true">
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -4312,7 +4391,7 @@ limit 100;</stringProp>
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">Ora_Reflection.csv</stringProp>
+        <stringProp name="filename">drem418_Ora_Norfl.csv</stringProp>
       </ResultCollector>
       <hashTree/>
     </hashTree>

@@ -7,4 +7,6 @@
 *.jtl
 *.xls
 *.jzon
-
+*.dat
+*.xslx
+/data/tpcds/test.sh

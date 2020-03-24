@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.2.1">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Ora_Test_template" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -9,87 +9,27 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+      <stringProp name="TestPlan.user_define_classpath">/Users/markjohnson/Downloads,/Users/markjohnson/Downloads,/Users,/Users/markjohnson/Downloads,/Users/markjohnson/dremio-jdbc-driver-4.1.0-201912030136020081-49feeb75.jar</stringProp>
     </TestPlan>
     <hashTree>
       <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
         <boolProp name="autocommit">true</boolProp>
-        <stringProp name="checkQuery">select 1 from dual</stringProp>
+        <stringProp name="checkQuery">select 1</stringProp>
         <stringProp name="connectionAge">5000</stringProp>
         <stringProp name="dataSource">dremio_connection</stringProp>
-        <stringProp name="dbUrl">jdbc:oracle:thin:@server6:1521/orcl</stringProp>
-        <stringProp name="driver">oracle.jdbc.OracleDriver</stringProp>
+        <stringProp name="dbUrl">jdbc:dremio:direct=dremio-c1:31010</stringProp>
+        <stringProp name="driver">com.dremio.jdbc.Driver</stringProp>
         <stringProp name="initQuery"></stringProp>
         <boolProp name="keepAlive">true</boolProp>
-        <stringProp name="password">tiger</stringProp>
-        <stringProp name="poolMax">100</stringProp>
+        <stringProp name="password">dremio123</stringProp>
+        <stringProp name="poolMax">200</stringProp>
         <stringProp name="timeout">10000</stringProp>
         <stringProp name="transactionIsolation">DEFAULT</stringProp>
         <stringProp name="trimInterval">60000</stringProp>
-        <stringProp name="username">scott</stringProp>
+        <stringProp name="username">mark</stringProp>
+        <boolProp name="preinit">false</boolProp>
+        <stringProp name="connectionProperties"></stringProp>
       </JDBCDataSource>
-      <hashTree/>
-      <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
-        <boolProp name="ResultCollector.error_logging">false</boolProp>
-        <objProp>
-          <name>saveConfig</name>
-          <value class="SampleSaveConfiguration">
-            <time>true</time>
-            <latency>true</latency>
-            <timestamp>true</timestamp>
-            <success>true</success>
-            <label>true</label>
-            <code>true</code>
-            <message>true</message>
-            <threadName>true</threadName>
-            <dataType>true</dataType>
-            <encoding>false</encoding>
-            <assertions>true</assertions>
-            <subresults>true</subresults>
-            <responseData>false</responseData>
-            <samplerData>false</samplerData>
-            <xml>false</xml>
-            <fieldNames>true</fieldNames>
-            <responseHeaders>false</responseHeaders>
-            <requestHeaders>false</requestHeaders>
-            <responseDataOnError>false</responseDataOnError>
-            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-            <assertionsResultsToSave>0</assertionsResultsToSave>
-            <bytes>true</bytes>
-            <sentBytes>true</sentBytes>
-            <url>true</url>
-            <threadCounts>true</threadCounts>
-            <idleTime>true</idleTime>
-            <connectTime>true</connectTime>
-          </value>
-        </objProp>
-        <stringProp name="filename">Ora_Native.jtl</stringProp>
-      </ResultCollector>
-      <hashTree/>
-      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
-        <collectionProp name="Arguments.arguments">
-          <elementProp name="ConcurrentUsers" elementType="Argument">
-            <stringProp name="Argument.name">ConcurrentUsers</stringProp>
-            <stringProp name="Argument.value">2</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="LoopCount" elementType="Argument">
-            <stringProp name="Argument.name">LoopCount</stringProp>
-            <stringProp name="Argument.value">5</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="RampUp" elementType="Argument">
-            <stringProp name="Argument.name">RampUp</stringProp>
-            <stringProp name="Argument.value">10</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-          <elementProp name="RowLimit" elementType="Argument">
-            <stringProp name="Argument.name">RowLimit</stringProp>
-            <stringProp name="Argument.value">100000</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
-        </collectionProp>
-      </Arguments>
       <hashTree/>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Query 1" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -102,6 +42,7 @@
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 1" enabled="true">
@@ -111,25 +52,24 @@ with customer_total_return as
 (select sr_customer_sk as ctr_customer_sk
 ,sr_store_sk as ctr_store_sk
 ,sum(SR_FEE) as ctr_total_return
-from store_returns
-,date_dim
+from minio.output.store_returns
+,minio.output.date_dim
 where sr_returned_date_sk = d_date_sk
 and d_year =2000
 group by sr_customer_sk
 ,sr_store_sk)
  select  c_customer_id
 from customer_total_return ctr1
-,store
-,customer
+,minio.output.store
+,minio.output.customer
 where ctr1.ctr_total_return &gt; (select avg(ctr_total_return)*1.2
 from customer_total_return ctr2
 where ctr1.ctr_store_sk = ctr2.ctr_store_sk)
 and s_store_sk = ctr1.ctr_store_sk
 and s_state = &apos;TN&apos;
 and ctr1.ctr_customer_sk = c_customer_sk
-and rownum &lt;= 100
 order by c_customer_id
-</stringProp>
+limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -137,6 +77,7 @@ order by c_customer_id
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -151,6 +92,7 @@ order by c_customer_id
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 3" enabled="true">
@@ -160,21 +102,20 @@ select  dt.d_year
        ,item.i_brand_id brand_id
        ,item.i_brand brand
        ,sum(ss_ext_sales_price) sum_agg
- from  date_dim dt
-      ,store_sales
-      ,item
+ from  minio.output.date_dim dt
+      ,minio.output.store_sales
+      ,minio.output.item
  where dt.d_date_sk = store_sales.ss_sold_date_sk
    and store_sales.ss_item_sk = item.i_item_sk
    and item.i_manufact_id = 977
    and dt.d_moy=12
-   and rownum &lt;= 100
  group by dt.d_year
       ,item.i_brand
       ,item.i_brand_id
  order by dt.d_year
          ,sum_agg desc
          ,brand_id
-</stringProp>
+ limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -183,6 +124,7 @@ select  dt.d_year
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">XXX </stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -197,6 +139,7 @@ select  dt.d_year
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 4" enabled="true">
@@ -213,9 +156,9 @@ with year_total as (
        ,d_year dyear
        ,sum(((ss_ext_list_price-ss_ext_wholesale_cost-ss_ext_discount_amt)+ss_ext_sales_price)/2) year_total
        ,&apos;s&apos; sale_type
- from customer
-     ,store_sales
-     ,date_dim
+ from minio.output.customer
+     ,minio.output.store_sales
+     ,minio.output.date_dim
  where c_customer_sk = ss_customer_sk
    and ss_sold_date_sk = d_date_sk
  group by c_customer_id
@@ -237,9 +180,9 @@ with year_total as (
        ,d_year dyear
        ,sum((((cs_ext_list_price-cs_ext_wholesale_cost-cs_ext_discount_amt)+cs_ext_sales_price)/2) ) year_total
        ,&apos;c&apos; sale_type
- from customer
-     ,catalog_sales
-     ,date_dim
+ from minio.output.customer
+     ,minio.output.catalog_sales
+     ,minio.output.date_dim
  where c_customer_sk = cs_bill_customer_sk
    and cs_sold_date_sk = d_date_sk
  group by c_customer_id
@@ -261,9 +204,9 @@ union all
        ,d_year dyear
        ,sum((((ws_ext_list_price-ws_ext_wholesale_cost-ws_ext_discount_amt)+ws_ext_sales_price)/2) ) year_total
        ,&apos;w&apos; sale_type
- from customer
-     ,web_sales
-     ,date_dim
+ from minio.output.customer
+     ,minio.output.web_sales
+     ,minio.output.date_dim
  where c_customer_sk = ws_bill_customer_sk
    and ws_sold_date_sk = d_date_sk
 group by c_customer_id
@@ -310,11 +253,11 @@ group by c_customer_id
            &gt; case when t_s_firstyear.year_total &gt; 0 then t_s_secyear.year_total / t_s_firstyear.year_total else null end
    and case when t_c_firstyear.year_total &gt; 0 then t_c_secyear.year_total / t_c_firstyear.year_total else null end
            &gt; case when t_w_firstyear.year_total &gt; 0 then t_w_secyear.year_total / t_w_firstyear.year_total else null end
-   and rownum &lt;= 100
  order by t_s_secyear.customer_id
          ,t_s_secyear.customer_first_name
          ,t_s_secyear.customer_last_name
          ,t_s_secyear.customer_birth_country
+limit 100;
 
          
        </stringProp>
@@ -325,10 +268,11 @@ group by c_customer_id
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Query 7" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Query 7" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -339,6 +283,7 @@ group by c_customer_id
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 7" enabled="true">
@@ -349,7 +294,7 @@ select  i_item_id,
         avg(ss_list_price) agg2,
         avg(ss_coupon_amt) agg3,
         avg(ss_sales_price) agg4 
- from store_sales, customer_demographics, date_dim, item, promotion
+ from minio.output.store_sales, minio.output.customer_demographics, minio.output.date_dim, minio.output.item, minio.output.promotion
  where ss_sold_date_sk = d_date_sk and
        ss_item_sk = i_item_sk and
        ss_cdemo_sk = cd_demo_sk and
@@ -359,10 +304,9 @@ select  i_item_id,
        cd_education_status = &apos;Secondary&apos; and
        (p_channel_email = &apos;N&apos; or p_channel_event = &apos;N&apos;) and
        d_year = 2002 
-       and rownum &lt;= 100
  group by i_item_id
  order by i_item_id
-
+ limit 100;
 </stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -371,6 +315,7 @@ select  i_item_id,
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -385,59 +330,60 @@ select  i_item_id,
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 9" enabled="true">
           <stringProp name="dataSource">dremio_connection</stringProp>
           <stringProp name="query">-- start query 8 in stream 0 using template query9.tpl
 select case when (select count(*) 
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 1 and 20) &gt; 8863
             then (select avg(ss_ext_tax) 
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 1 and 20) 
             else (select avg(ss_net_profit)
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 1 and 20) end bucket1 ,
        case when (select count(*)
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 21 and 40) &gt; 44190
             then (select avg(ss_ext_tax)
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 21 and 40) 
             else (select avg(ss_net_profit)
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 21 and 40) end bucket2,
        case when (select count(*)
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 41 and 60) &gt; 29435
             then (select avg(ss_ext_tax)
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 41 and 60)
             else (select avg(ss_net_profit)
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 41 and 60) end bucket3,
        case when (select count(*)
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 61 and 80) &gt; 920
             then (select avg(ss_ext_tax)
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 61 and 80)
             else (select avg(ss_net_profit)
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 61 and 80) end bucket4,
        case when (select count(*)
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 81 and 100) &gt; 32224
             then (select avg(ss_ext_tax)
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 81 and 100)
             else (select avg(ss_net_profit)
-                  from store_sales
+                  from minio.output.store_sales
                   where ss_quantity between 81 and 100) end bucket5
-from reason
-where r_reason_sk = 1 
-</stringProp>
+from minio.output.reason
+where r_reason_sk = 1
+;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -445,6 +391,7 @@ where r_reason_sk = 1
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -459,6 +406,7 @@ where r_reason_sk = 1
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 10" enabled="false">
@@ -480,25 +428,25 @@ select
   cd_dep_college_count,
   count(*) cnt6
  from
-  customer c,customer_address ca,customer_demographics
+  minio.output.customer c,minio.output.customer_address ca,minio.output.customer_demographics
  where
   c.c_current_addr_sk = ca.ca_address_sk and
   ca_county in (&apos;Fremont County&apos;,&apos;Garvin County&apos;,&apos;Union County&apos;,&apos;Pinal County&apos;,&apos;Cavalier County&apos;) and
   cd_demo_sk = c.c_current_cdemo_sk and 
   exists (select *
-          from store_sales,date_dim
+          from minio.output.store_sales,minio.output.date_dim
           where c.c_customer_sk = ss_customer_sk and
                 ss_sold_date_sk = d_date_sk and
                 d_year = 2002 and
                 d_moy between 3 and 3+3) and
    (exists (select *
-            from web_sales,date_dim
+            from minio.output.web_sales,minio.output.date_dim
             where c.c_customer_sk = ws_bill_customer_sk and
                   ws_sold_date_sk = d_date_sk and
                   d_year = 2002 and
                   d_moy between 3 ANd 3+3) or 
     exists (select * 
-            from catalog_sales,date_dim
+            from minio.output.catalog_sales,minio.output.date_dim
             where c.c_customer_sk = cs_ship_customer_sk and
                   cs_sold_date_sk = d_date_sk and
                   d_year = 2002 and
@@ -529,6 +477,7 @@ limit 100;
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">JMeter out of memory</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -543,6 +492,7 @@ limit 100;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 11" enabled="true">
@@ -559,9 +509,9 @@ with year_total as (
        ,d_year dyear
        ,sum(ss_ext_list_price-ss_ext_discount_amt) year_total
        ,&apos;s&apos; sale_type
- from customer
-     ,store_sales
-     ,date_dim
+ from minio.output.customer
+     ,minio.output.store_sales
+     ,minio.output.date_dim
  where c_customer_sk = ss_customer_sk
    and ss_sold_date_sk = d_date_sk
  group by c_customer_id
@@ -583,9 +533,9 @@ with year_total as (
        ,d_year dyear
        ,sum(ws_ext_list_price-ws_ext_discount_amt) year_total
        ,&apos;w&apos; sale_type
- from customer
-     ,web_sales
-     ,date_dim
+ from minio.output.customer
+     ,minio.output.web_sales
+     ,minio.output.date_dim
  where c_customer_sk = ws_bill_customer_sk
    and ws_sold_date_sk = d_date_sk
  group by c_customer_id
@@ -621,12 +571,11 @@ with year_total as (
          and t_w_firstyear.year_total &gt; 0
          and case when t_w_firstyear.year_total &gt; 0 then t_w_secyear.year_total / t_w_firstyear.year_total else 0.0 end
              &gt; case when t_s_firstyear.year_total &gt; 0 then t_s_secyear.year_total / t_s_firstyear.year_total else 0.0 end
-         and rownum &lt;= 100
  order by t_s_secyear.customer_id
          ,t_s_secyear.customer_first_name
          ,t_s_secyear.customer_last_name
          ,t_s_secyear.customer_preferred_cust_flag
-</stringProp>
+limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -634,6 +583,7 @@ with year_total as (
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -649,6 +599,7 @@ with year_total as (
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
         <stringProp name="TestPlan.comments">Disabled due to need to modify date math</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 12" enabled="false">
@@ -662,9 +613,9 @@ with year_total as (
       ,sum(ws_ext_sales_price)*100/sum(sum(ws_ext_sales_price)) over
           (partition by i_class) as revenueratio
 from	
-	web_sales
-    	,item
-    	,date_dim
+	minio.output.web_sales
+    	,minio.output.item
+    	,minio.output.date_dim
 where 
 	ws_item_sk = i_item_sk 
   	and i_category in (&apos;Children&apos;, &apos;Books&apos;, &apos;Home&apos;)
@@ -695,6 +646,7 @@ limit 100;
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Oracle 10 Count</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -709,6 +661,7 @@ limit 100;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 13" enabled="false">
@@ -718,12 +671,12 @@ select avg(ss_quantity)
        ,avg(ss_ext_sales_price)
        ,avg(ss_ext_wholesale_cost)
        ,sum(ss_ext_wholesale_cost)
- from store_sales
-     ,store
-     ,customer_demographics
-     ,household_demographics
-     ,customer_address
-     ,date_dim
+ from minio.output.store_sales
+     ,minio.output.store
+     ,minio.output.customer_demographics
+     ,minio.output.household_demographics
+     ,minio.output.customer_address
+     ,minio.output.date_dim
  where s_store_sk = ss_store_sk
  and  ss_sold_date_sk = d_date_sk and d_year = 2001
  and((ss_hdemo_sk=hd_demo_sk
@@ -771,6 +724,7 @@ select avg(ss_quantity)
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Seems to hang</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -785,6 +739,7 @@ select avg(ss_quantity)
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 14" enabled="false">
@@ -792,13 +747,13 @@ select avg(ss_quantity)
           <stringProp name="query">-- start query 13 in stream 0 using template query14.tpl
 with  cross_items as
  (select i_item_sk ss_item_sk
- from item,
+ from minio.output.item,
  (select iss.i_brand_id brand_id
      ,iss.i_class_id class_id
      ,iss.i_category_id category_id
- from store_sales
-     ,item iss
-     ,date_dim d1
+ from minio.output.store_sales
+     ,minio.output.item iss
+     ,minio.output.date_dim d1
  where ss_item_sk = iss.i_item_sk
    and ss_sold_date_sk = d1.d_date_sk
    and d1.d_year between 2000 AND 2000 + 2
@@ -806,9 +761,9 @@ with  cross_items as
  select ics.i_brand_id
      ,ics.i_class_id
      ,ics.i_category_id
- from catalog_sales
-     ,item ics
-     ,date_dim d2
+ from minio.output.catalog_sales
+     ,minio.output.item ics
+     ,minio.output.date_dim d2
  where cs_item_sk = ics.i_item_sk
    and cs_sold_date_sk = d2.d_date_sk
    and d2.d_year between 2000 AND 2000 + 2
@@ -816,9 +771,9 @@ with  cross_items as
  select iws.i_brand_id
      ,iws.i_class_id
      ,iws.i_category_id
- from web_sales
-     ,item iws
-     ,date_dim d3
+ from minio.output.web_sales
+     ,minio.output.item iws
+     ,minio.output.date_dim d3
  where ws_item_sk = iws.i_item_sk
    and ws_sold_date_sk = d3.d_date_sk
    and d3.d_year between 2000 AND 2000 + 2)
@@ -830,22 +785,22 @@ with  cross_items as
  (select avg(quantity*list_price) average_sales
   from (select ss_quantity quantity
              ,ss_list_price list_price
-       from store_sales
-           ,date_dim
+       from minio.output.store_sales
+           ,minio.output.date_dim
        where ss_sold_date_sk = d_date_sk
          and d_year between 2000 and 2000 + 2
        union all 
        select cs_quantity quantity 
              ,cs_list_price list_price
-       from catalog_sales
-           ,date_dim
+       from minio.output.catalog_sales
+           ,minio.output.date_dim
        where cs_sold_date_sk = d_date_sk
          and d_year between 2000 and 2000 + 2 
        union all
        select ws_quantity quantity
              ,ws_list_price list_price
-       from web_sales
-           ,date_dim
+       from minio.output.web_sales
+           ,minio.output.date_dim
        where ws_sold_date_sk = d_date_sk
          and d_year between 2000 and 2000 + 2) x)
   select  channel, i_brand_id,i_class_id,i_category_id,sum(sales), sum(number_sales)
@@ -853,9 +808,9 @@ with  cross_items as
        select &apos;store&apos; channel, i_brand_id,i_class_id
              ,i_category_id,sum(ss_quantity*ss_list_price) sales
              , count(*) number_sales
-       from store_sales
-           ,item
-           ,date_dim
+       from minio.output.store_sales
+           ,minio.output.item
+           ,minio.output.date_dim
        where ss_item_sk in (select ss_item_sk from cross_items)
          and ss_item_sk = i_item_sk
          and ss_sold_date_sk = d_date_sk
@@ -865,9 +820,9 @@ with  cross_items as
        having sum(ss_quantity*ss_list_price) &gt; (select average_sales from avg_sales)
        union all
        select &apos;catalog&apos; channel, i_brand_id,i_class_id,i_category_id, sum(cs_quantity*cs_list_price) sales, count(*) number_sales
-       from catalog_sales
-           ,item
-           ,date_dim
+       from minio.output.catalog_sales
+           ,minio.output.item
+           ,minio.output.date_dim
        where cs_item_sk in (select ss_item_sk from cross_items)
          and cs_item_sk = i_item_sk
          and cs_sold_date_sk = d_date_sk
@@ -877,9 +832,9 @@ with  cross_items as
        having sum(cs_quantity*cs_list_price) &gt; (select average_sales from avg_sales)
        union all
        select &apos;web&apos; channel, i_brand_id,i_class_id,i_category_id, sum(ws_quantity*ws_list_price) sales , count(*) number_sales
-       from web_sales
-           ,item
-           ,date_dim
+       from minio.output.web_sales
+           ,minio.output.item
+           ,minio.output.date_dim
        where ws_item_sk in (select ss_item_sk from cross_items)
          and ws_item_sk = i_item_sk
          and ws_sold_date_sk = d_date_sk
@@ -893,13 +848,13 @@ with  cross_items as
  limit 100;
 with  cross_items as
  (select i_item_sk ss_item_sk
- from item,
+ from minio.output.item,
  (select iss.i_brand_id brand_id
      ,iss.i_class_id class_id
      ,iss.i_category_id category_id
- from store_sales
-     ,item iss
-     ,date_dim d1
+ from minio.output.store_sales
+     ,minio.output.item iss
+     ,minio.output.date_dim d1
  where ss_item_sk = iss.i_item_sk
    and ss_sold_date_sk = d1.d_date_sk
    and d1.d_year between 2000 AND 2000 + 2
@@ -907,9 +862,9 @@ with  cross_items as
  select ics.i_brand_id
      ,ics.i_class_id
      ,ics.i_category_id
- from catalog_sales
-     ,item ics
-     ,date_dim d2
+ from minio.output.catalog_sales
+     ,minio.output.item ics
+     ,minio.output.date_dim d2
  where cs_item_sk = ics.i_item_sk
    and cs_sold_date_sk = d2.d_date_sk
    and d2.d_year between 2000 AND 2000 + 2
@@ -917,9 +872,9 @@ with  cross_items as
  select iws.i_brand_id
      ,iws.i_class_id
      ,iws.i_category_id
- from web_sales
-     ,item iws
-     ,date_dim d3
+ from minio.output.web_sales
+     ,minio.output.item iws
+     ,minio.output.date_dim d3
  where ws_item_sk = iws.i_item_sk
    and ws_sold_date_sk = d3.d_date_sk
    and d3.d_year between 2000 AND 2000 + 2) x
@@ -931,22 +886,22 @@ with  cross_items as
 (select avg(quantity*list_price) average_sales
   from (select ss_quantity quantity
              ,ss_list_price list_price
-       from store_sales
-           ,date_dim
+       from minio.output.store_sales
+           ,minio.output.date_dim
        where ss_sold_date_sk = d_date_sk
          and d_year between 2000 and 2000 + 2
        union all
        select cs_quantity quantity
              ,cs_list_price list_price
-       from catalog_sales
-           ,date_dim
+       from minio.output.catalog_sales
+           ,minio.output.date_dim
        where cs_sold_date_sk = d_date_sk
          and d_year between 2000 and 2000 + 2
        union all
        select ws_quantity quantity
              ,ws_list_price list_price
-       from web_sales
-           ,date_dim
+       from minio.output.web_sales
+           ,minio.output.date_dim
        where ws_sold_date_sk = d_date_sk
          and d_year between 2000 and 2000 + 2) x)
   select  this_year.channel ty_channel
@@ -964,14 +919,14 @@ with  cross_items as
  from
  (select &apos;store&apos; channel, i_brand_id,i_class_id,i_category_id
         ,sum(ss_quantity*ss_list_price) sales, count(*) number_sales
- from store_sales
-     ,item
-     ,date_dim
+ from minio.output.store_sales
+     ,minio.output.item
+     ,minio.output.date_dim
  where ss_item_sk in (select ss_item_sk from cross_items)
    and ss_item_sk = i_item_sk
    and ss_sold_date_sk = d_date_sk
    and d_week_seq = (select d_week_seq
-                     from date_dim
+                     from minio.output.date_dim
                      where d_year = 2000 + 1
                        and d_moy = 12
                        and d_dom = 6)
@@ -979,14 +934,14 @@ with  cross_items as
  having sum(ss_quantity*ss_list_price) &gt; (select average_sales from avg_sales)) this_year,
  (select &apos;store&apos; channel, i_brand_id,i_class_id
         ,i_category_id, sum(ss_quantity*ss_list_price) sales, count(*) number_sales
- from store_sales
-     ,item
-     ,date_dim
+ from minio.output.store_sales
+     ,minio.output.item
+     ,minio.output.date_dim
  where ss_item_sk in (select ss_item_sk from cross_items)
    and ss_item_sk = i_item_sk
    and ss_sold_date_sk = d_date_sk
    and d_week_seq = (select d_week_seq
-                     from date_dim
+                     from minio.output.date_dim
                      where d_year = 2000
                        and d_moy = 12
                        and d_dom = 6)
@@ -1006,6 +961,7 @@ with  cross_items as
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Has Intersect statement</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1020,6 +976,7 @@ with  cross_items as
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 15" enabled="true">
@@ -1027,10 +984,10 @@ with  cross_items as
           <stringProp name="query">-- start query 14 in stream 0 using template query15.tpl
 select  ca_zip
        ,sum(cs_sales_price)
- from catalog_sales
-     ,customer
-     ,customer_address
-     ,date_dim
+ from minio.output.catalog_sales
+     ,minio.output.customer
+     ,minio.output.customer_address
+     ,minio.output.date_dim
  where cs_bill_customer_sk = c_customer_sk
  	and c_current_addr_sk = ca_address_sk 
  	and ( substr(ca_zip,1,5) in (&apos;85669&apos;, &apos;86197&apos;,&apos;88274&apos;,&apos;83405&apos;,&apos;86475&apos;,
@@ -1039,9 +996,9 @@ select  ca_zip
  	      or cs_sales_price &gt; 500)
  	and cs_sold_date_sk = d_date_sk
  	and d_qoy = 1 and d_year = 1998
- 	and rownum &lt;= 100
  group by ca_zip
  order by ca_zip
+ limit 100;
 </stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -1050,6 +1007,7 @@ select  ca_zip
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1064,6 +1022,7 @@ select  ca_zip
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 16" enabled="false">
@@ -1074,10 +1033,10 @@ select
   ,sum(cs_ext_ship_cost) as &quot;total shipping cost&quot;
   ,sum(cs_net_profit) as &quot;total net profit&quot;
 from
-   catalog_sales cs1
-  ,date_dim
-  ,customer_address
-  ,call_center
+   minio.output.catalog_sales cs1
+  ,minio.output.date_dim
+  ,minio.output.customer_address
+  ,minio.output.call_center
 where
     d_date between &apos;2001-4-01&apos; and 
            (cast(&apos;2001-4-01&apos; as date) + 60 days)
@@ -1089,11 +1048,11 @@ and cc_county in (&apos;Williamson County&apos;,&apos;Williamson County&apos;,&a
                   &apos;Williamson County&apos;
 )
 and exists (select *
-            from catalog_sales cs2
+            from minio.output.catalog_sales cs2
             where cs1.cs_order_number = cs2.cs_order_number
               and cs1.cs_warehouse_sk &lt;&gt; cs2.cs_warehouse_sk)
 and not exists(select *
-               from catalog_returns cr1
+               from minio.output.catalog_returns cr1
                where cs1.cs_order_number = cr1.cr_order_number)
 order by count(distinct cs_order_number)
 limit 100;</stringProp>
@@ -1105,6 +1064,7 @@ limit 100;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Need to clean up date math</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1119,6 +1079,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 17" enabled="true">
@@ -1138,14 +1099,14 @@ select  i_item_id
        ,count(cs_quantity) as catalog_sales_quantitycount ,avg(cs_quantity) as catalog_sales_quantityave
        ,stddev_samp(cs_quantity) as catalog_sales_quantitystdev
        ,stddev_samp(cs_quantity)/avg(cs_quantity) as catalog_sales_quantitycov
- from store_sales
-     ,store_returns
-     ,catalog_sales
-     ,date_dim d1
-     ,date_dim d2
-     ,date_dim d3
-     ,store
-     ,item
+ from minio.output.store_sales
+     ,minio.output.store_returns
+     ,minio.output.catalog_sales
+     ,minio.output.date_dim d1
+     ,minio.output.date_dim d2
+     ,minio.output.date_dim d3
+     ,minio.output.store
+     ,minio.output.item
  where d1.d_quarter_name = &apos;2000Q1&apos;
    and d1.d_date_sk = ss_sold_date_sk
    and i_item_sk = ss_item_sk
@@ -1159,14 +1120,13 @@ select  i_item_id
    and sr_item_sk = cs_item_sk
    and cs_sold_date_sk = d3.d_date_sk
    and d3.d_quarter_name in (&apos;2000Q1&apos;,&apos;2000Q2&apos;,&apos;2000Q3&apos;)
-   and rownum &lt;= 100
  group by i_item_id
          ,i_item_desc
          ,s_state
  order by i_item_id
          ,i_item_desc
          ,s_state
-
+limit 100;
 </stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -1175,6 +1135,7 @@ select  i_item_id
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1189,6 +1150,7 @@ select  i_item_id
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 18" enabled="false">
@@ -1205,8 +1167,8 @@ select  i_item_id,
         avg( cast(cs_net_profit as decimal(12,2))) agg5,
         avg( cast(c_birth_year as decimal(12,2))) agg6,
         avg( cast(cd1.cd_dep_count as decimal(12,2))) agg7
- from catalog_sales, customer_demographics cd1,
-      customer_demographics cd2, customer, customer_address, date_dim, item
+ from minio.output.catalog_sales, minio.output.customer_demographics cd1,
+      minio.output.customer_demographics cd2, minio.output.customer, minio.output.customer_address, minio.output.date_dim, minio.output.item
  where cs_sold_date_sk = d_date_sk and
        cs_item_sk = i_item_sk and
        cs_bill_cdemo_sk = cd1.cd_demo_sk and
@@ -1234,6 +1196,7 @@ select  i_item_id,
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">dremio doesnt support  group by rollup </stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1249,6 +1212,7 @@ select  i_item_id,
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
         <stringProp name="TestPlan.comments">Disabled due to need to modify date math</stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 19" enabled="true">
@@ -1256,7 +1220,7 @@ select  i_item_id,
           <stringProp name="query">-- start query 18 in stream 0 using template query19.tpl
 select  i_brand_id brand_id, i_brand brand, i_manufact_id, i_manufact,
  	sum(ss_ext_sales_price) ext_price
- from date_dim, store_sales, item,customer,customer_address,store
+ from minio.output.date_dim, minio.output.store_sales, minio.output.item,minio.output.customer,minio.output.customer_address,minio.output.store
  where d_date_sk = ss_sold_date_sk
    and ss_item_sk = i_item_sk
    and i_manager_id=40
@@ -1266,7 +1230,6 @@ select  i_brand_id brand_id, i_brand brand, i_manufact_id, i_manufact,
    and c_current_addr_sk = ca_address_sk
    and substr(ca_zip,1,5) &lt;&gt; substr(s_zip,1,5) 
    and ss_store_sk = s_store_sk 
-   and rownum &lt;= 100
  group by i_brand
       ,i_brand_id
       ,i_manufact_id
@@ -1276,7 +1239,7 @@ select  i_brand_id brand_id, i_brand brand, i_manufact_id, i_manufact,
          ,i_brand_id
          ,i_manufact_id
          ,i_manufact
-</stringProp>
+limit 100 ;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -1284,6 +1247,7 @@ select  i_brand_id brand_id, i_brand brand, i_manufact_id, i_manufact,
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1298,6 +1262,7 @@ select  i_brand_id brand_id, i_brand brand, i_manufact_id, i_manufact,
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 20" enabled="false">
@@ -1312,8 +1277,8 @@ select  i_item_id
        ,sum(cs_ext_sales_price)*100/sum(sum(cs_ext_sales_price)) over
            (partition by i_class) as revenueratio
  from	catalog_sales
-     ,item 
-     ,date_dim
+     ,minio.output.item 
+     ,minio.output.date_dim
  where cs_item_sk = i_item_sk 
    and i_category in (&apos;Men&apos;, &apos;Shoes&apos;, &apos;Jewelry&apos;)
    and cs_sold_date_sk = d_date_sk
@@ -1338,6 +1303,7 @@ limit 100;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Date refactoring</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1352,6 +1318,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 21" enabled="false">
@@ -1366,10 +1333,10 @@ select  *
             ,sum(case when (cast(d_date as date) &gt;= cast (&apos;1999-04-23&apos; as date))
                       then inv_quantity_on_hand 
                       else 0 end) as inv_after
-   from inventory
-       ,warehouse
-       ,item
-       ,date_dim
+   from minio.output.inventory
+       ,minio.output.warehouse
+       ,minio.output.item
+       ,minio.output.date_dim
    where i_current_price between 0.99 and 1.49
      and i_item_sk          = inv_item_sk
      and inv_warehouse_sk   = w_warehouse_sk
@@ -1392,6 +1359,7 @@ select  *
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">REFACTOR DATES</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1406,6 +1374,7 @@ select  *
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 22" enabled="false">
@@ -1416,9 +1385,9 @@ select  i_product_name
              ,i_class
              ,i_category
              ,avg(inv_quantity_on_hand) qoh
-       from inventory
-           ,date_dim
-           ,item
+       from minio.output.inventory
+           ,minio.output.date_dim
+           ,minio.output.item
        where inv_date_sk=d_date_sk
               and inv_item_sk=i_item_sk
               and d_month_seq between 1187 and 1187 + 11
@@ -1437,6 +1406,7 @@ limit 100;
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Dremio doesn&apos;t support ROLLUP, CUBE or GROUPING SETS functionality.</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1451,6 +1421,7 @@ limit 100;
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 23" enabled="false">
@@ -1458,9 +1429,9 @@ limit 100;
           <stringProp name="query">
 with frequent_ss_items as 
  (select substr(i_item_desc,1,30) itemdesc,i_item_sk item_sk,d_date solddate,count(*) cnt
-  from store_sales
-      ,date_dim 
-      ,item
+  from minio.output.store_sales
+      ,minio.output.date_dim 
+      ,minio.output.item
   where ss_sold_date_sk = d_date_sk
     and ss_item_sk = i_item_sk 
     and d_year in (1999,1999+1,1999+2,1999+3)
@@ -1469,27 +1440,27 @@ with frequent_ss_items as
  max_store_sales as
  (select max(csales) tpcds_cmax 
   from (select c_customer_sk,sum(ss_quantity*ss_sales_price) csales
-        from store_sales
-            ,customer
-            ,date_dim 
+        from minio.output.store_sales
+            ,minio.output.customer
+            ,minio.output.date_dim 
         where ss_customer_sk = c_customer_sk
          and ss_sold_date_sk = d_date_sk
          and d_year in (1999,1999+1,1999+2,1999+3) 
         group by c_customer_sk)),
  best_ss_customer as
  (select c_customer_sk,sum(ss_quantity*ss_sales_price) ssales
-  from store_sales
-      ,customer
+  from minio.output.store_sales
+      ,minio.output.customer
   where ss_customer_sk = c_customer_sk
   group by c_customer_sk
   having sum(ss_quantity*ss_sales_price) &gt; (95/100.0) * (select
   *
 from
- max_store_sales))
+ minio.output.max_store_sales))
   select  sum(sales)
  from (select cs_quantity*cs_list_price sales
-       from catalog_sales
-           ,date_dim 
+       from minio.output.catalog_sales
+           ,minio.output.date_dim 
        where d_year = 1999 
          and d_moy = 3 
          and cs_sold_date_sk = d_date_sk 
@@ -1497,8 +1468,8 @@ from
          and cs_bill_customer_sk in (select c_customer_sk from best_ss_customer)
       union all
       select ws_quantity*ws_list_price sales
-       from web_sales 
-           ,date_dim 
+       from minio.output.web_sales 
+           ,minio.output.date_dim 
        where d_year = 1999 
          and d_moy = 3 
          and ws_sold_date_sk = d_date_sk 
@@ -1507,9 +1478,9 @@ from
  limit 100;
 with frequent_ss_items as
  (select substr(i_item_desc,1,30) itemdesc,i_item_sk item_sk,d_date solddate,count(*) cnt
-  from store_sales
-      ,date_dim
-      ,item
+  from minio.output.store_sales
+      ,minio.output.date_dim
+      ,minio.output.item
   where ss_sold_date_sk = d_date_sk
     and ss_item_sk = i_item_sk
     and d_year in (1999,1999 + 1,1999 + 2,1999 + 3)
@@ -1518,17 +1489,17 @@ with frequent_ss_items as
  max_store_sales as
  (select max(csales) tpcds_cmax
   from (select c_customer_sk,sum(ss_quantity*ss_sales_price) csales
-        from store_sales
-            ,customer
-            ,date_dim 
+        from minio.output.store_sales
+            ,minio.output.customer
+            ,minio.output.date_dim 
         where ss_customer_sk = c_customer_sk
          and ss_sold_date_sk = d_date_sk
          and d_year in (1999,1999+1,1999+2,1999+3)
         group by c_customer_sk)),
  best_ss_customer as
  (select c_customer_sk,sum(ss_quantity*ss_sales_price) ssales
-  from store_sales
-      ,customer
+  from minio.output.store_sales
+      ,minio.output.customer
   where ss_customer_sk = c_customer_sk
   group by c_customer_sk
   having sum(ss_quantity*ss_sales_price) &gt; (95/100.0) * (select
@@ -1536,9 +1507,9 @@ with frequent_ss_items as
  from max_store_sales))
   select  c_last_name,c_first_name,sales
  from (select c_last_name,c_first_name,sum(cs_quantity*cs_list_price) sales
-        from catalog_sales
-            ,customer
-            ,date_dim 
+        from minio.output.catalog_sales
+            ,minio.output.customer
+            ,minio.output.date_dim 
         where d_year = 1999 
          and d_moy = 3 
          and cs_sold_date_sk = d_date_sk 
@@ -1548,9 +1519,9 @@ with frequent_ss_items as
        group by c_last_name,c_first_name
       union all
       select c_last_name,c_first_name,sum(ws_quantity*ws_list_price) sales
-       from web_sales
-           ,customer
-           ,date_dim 
+       from minio.output.web_sales
+           ,minio.output.customer
+           ,minio.output.date_dim 
        where d_year = 1999 
          and d_moy = 3 
          and ws_sold_date_sk = d_date_sk 
@@ -1569,6 +1540,7 @@ with frequent_ss_items as
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Parsing error</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1583,6 +1555,7 @@ with frequent_ss_items as
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 24" enabled="false">
@@ -1600,12 +1573,12 @@ with ssales as
       ,i_units
       ,i_size
       ,sum(ss_net_paid_inc_tax) netpaid
-from store_sales
-    ,store_returns
-    ,store
-    ,item
-    ,customer
-    ,customer_address
+from minio.output.store_sales
+    ,minio.output.store_returns
+    ,minio.output.store
+    ,minio.output.item
+    ,minio.output.customer
+    ,minio.output.customer_address
 where ss_ticket_number = sr_ticket_number
   and ss_item_sk = sr_item_sk
   and ss_customer_sk = c_customer_sk
@@ -1652,12 +1625,12 @@ with ssales as
       ,i_units
       ,i_size
       ,sum(ss_net_paid_inc_tax) netpaid
-from store_sales
-    ,store_returns
-    ,store
-    ,item
-    ,customer
-    ,customer_address
+from minio.output.store_sales
+    ,minio.output.store_returns
+    ,minio.output.store
+    ,minio.output.item
+    ,minio.output.customer
+    ,minio.output.customer_address
 where ss_ticket_number = sr_ticket_number
   and ss_item_sk = sr_item_sk
   and ss_customer_sk = c_customer_sk
@@ -1700,6 +1673,7 @@ order by c_last_name
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Parsing error</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1714,6 +1688,7 @@ order by c_last_name
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 25" enabled="true">
@@ -1728,14 +1703,14 @@ select
  ,sum(sr_net_loss) as store_returns_loss
  ,sum(cs_net_profit) as catalog_sales_profit
  from
- store_sales
- ,store_returns
- ,catalog_sales
- ,date_dim d1
- ,date_dim d2
- ,date_dim d3
- ,store
- ,item
+ minio.output.store_sales
+ ,minio.output.store_returns
+ ,minio.output.catalog_sales
+ ,minio.output.date_dim d1
+ ,minio.output.date_dim d2
+ ,minio.output.date_dim d3
+ ,minio.output.store
+ ,minio.output.item
  where
  d1.d_moy = 4
  and d1.d_year = 2000
@@ -1753,7 +1728,6 @@ select
  and cs_sold_date_sk = d3.d_date_sk
  and d3.d_moy               between 4 and  10 
  and d3.d_year              = 2000
- and rownum &lt;= 100
  group by
  i_item_id
  ,i_item_desc
@@ -1764,7 +1738,7 @@ select
  ,i_item_desc
  ,s_store_id
  ,s_store_name
-</stringProp>
+ limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -1773,10 +1747,11 @@ select
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">dremio doesnt support  group by rollup </stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Query 26" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Query 26" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -1787,6 +1762,7 @@ select
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 26" enabled="true">
@@ -1797,7 +1773,7 @@ select  i_item_id,
         avg(cs_list_price) agg2,
         avg(cs_coupon_amt) agg3,
         avg(cs_sales_price) agg4 
- from catalog_sales, customer_demographics, date_dim, item, promotion
+ from minio.output.catalog_sales, minio.output.customer_demographics, minio.output.date_dim, minio.output.item, minio.output.promotion
  where cs_sold_date_sk = d_date_sk and
        cs_item_sk = i_item_sk and
        cs_bill_cdemo_sk = cd_demo_sk and
@@ -1807,10 +1783,9 @@ select  i_item_id,
        cd_education_status = &apos;2 yr Degree&apos; and
        (p_channel_email = &apos;N&apos; or p_channel_event = &apos;N&apos;) and
        d_year = 1999 
-       and rownum &lt;= 100
  group by i_item_id
  order by i_item_id
-</stringProp>
+ limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -1818,6 +1793,7 @@ select  i_item_id,
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1832,6 +1808,7 @@ select  i_item_id,
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 27" enabled="false">
@@ -1843,7 +1820,7 @@ select  i_item_id,
         avg(ss_list_price) agg2,
         avg(ss_coupon_amt) agg3,
         avg(ss_sales_price) agg4
- from store_sales, customer_demographics, date_dim, store, item
+ from minio.output.store_sales, minio.output.customer_demographics, minio.output.date_dim, minio.output.store, minio.output.item
  where ss_sold_date_sk = d_date_sk and
        ss_item_sk = i_item_sk and
        ss_store_sk = s_store_sk and
@@ -1865,6 +1842,7 @@ select  i_item_id,
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Grouping, Grouping_ID, Group_ID are not supported.</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1879,6 +1857,7 @@ select  i_item_id,
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 28" enabled="true">
@@ -1888,7 +1867,7 @@ select  *
 from (select avg(ss_list_price) B1_LP
             ,count(ss_list_price) B1_CNT
             ,count(distinct ss_list_price) B1_CNTD
-      from store_sales
+      from minio.output.store_sales
       where ss_quantity between 0 and 5
         and (ss_list_price between 108 and 108+10 
              or ss_coupon_amt between 1320 and 1320+1000
@@ -1896,7 +1875,7 @@ from (select avg(ss_list_price) B1_LP
      (select avg(ss_list_price) B2_LP
             ,count(ss_list_price) B2_CNT
             ,count(distinct ss_list_price) B2_CNTD
-      from store_sales
+      from minio.output.store_sales
       where ss_quantity between 6 and 10
         and (ss_list_price between 67 and 67+10
           or ss_coupon_amt between 760 and 760+1000
@@ -1904,7 +1883,7 @@ from (select avg(ss_list_price) B1_LP
      (select avg(ss_list_price) B3_LP
             ,count(ss_list_price) B3_CNT
             ,count(distinct ss_list_price) B3_CNTD
-      from store_sales
+      from minio.output.store_sales
       where ss_quantity between 11 and 15
         and (ss_list_price between 13 and 13+10
           or ss_coupon_amt between 4382 and 4382+1000
@@ -1912,7 +1891,7 @@ from (select avg(ss_list_price) B1_LP
      (select avg(ss_list_price) B4_LP
             ,count(ss_list_price) B4_CNT
             ,count(distinct ss_list_price) B4_CNTD
-      from store_sales
+      from minio.output.store_sales
       where ss_quantity between 16 and 20
         and (ss_list_price between 133 and 133+10
           or ss_coupon_amt between 5768 and 5768+1000
@@ -1920,7 +1899,7 @@ from (select avg(ss_list_price) B1_LP
      (select avg(ss_list_price) B5_LP
             ,count(ss_list_price) B5_CNT
             ,count(distinct ss_list_price) B5_CNTD
-      from store_sales
+      from minio.output.store_sales
       where ss_quantity between 21 and 25
         and (ss_list_price between 167 and 167+10
           or ss_coupon_amt between 10703 and 10703+1000
@@ -1928,12 +1907,12 @@ from (select avg(ss_list_price) B1_LP
      (select avg(ss_list_price) B6_LP
             ,count(ss_list_price) B6_CNT
             ,count(distinct ss_list_price) B6_CNTD
-      from store_sales
+      from minio.output.store_sales
       where ss_quantity between 26 and 30
         and (ss_list_price between 138 and 138+10
           or ss_coupon_amt between 5793 and 5793+1000
           or ss_wholesale_cost between 56 and 56+20)) B6
-where rownum &lt;= 100
+limit 100;
 </stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -1943,6 +1922,7 @@ where rownum &lt;= 100
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">REFACTOR DATES</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -1957,6 +1937,7 @@ where rownum &lt;= 100
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 29" enabled="true">
@@ -1971,14 +1952,14 @@ select
     ,avg(sr_return_quantity) as store_returns_quantity
     ,avg(cs_quantity)        as catalog_sales_quantity
  from
-    store_sales
-   ,store_returns
-   ,catalog_sales
-   ,date_dim             d1
-   ,date_dim             d2
-   ,date_dim             d3
-   ,store
-   ,item
+    minio.output.store_sales
+   ,minio.output.store_returns
+   ,minio.output.catalog_sales
+   ,minio.output.date_dim             d1
+   ,minio.output.date_dim             d2
+   ,minio.output.date_dim             d3
+   ,minio.output.store
+   ,minio.output.item
  where
      d1.d_moy               = 4 
  and d1.d_year              = 2000
@@ -1995,7 +1976,6 @@ select
  and sr_item_sk             = cs_item_sk
  and cs_sold_date_sk        = d3.d_date_sk     
  and d3.d_year              in (2000,2000+1,2000+2)
- and rownum &lt;= 100
  group by
     i_item_id
    ,i_item_desc
@@ -2006,7 +1986,7 @@ select
    ,i_item_desc
    ,s_store_id
    ,s_store_name
-
+ limit 100;
 </stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -2016,6 +1996,7 @@ select
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Dremio doesn&apos;t support ROLLUP, CUBE or GROUPING SETS functionality.</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2030,6 +2011,7 @@ select
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 30" enabled="true">
@@ -2039,9 +2021,9 @@ with customer_total_return as
  (select wr_returning_customer_sk as ctr_customer_sk
         ,ca_state as ctr_state, 
  	sum(wr_return_amt) as ctr_total_return
- from web_returns
-     ,date_dim
-     ,customer_address
+ from minio.output.web_returns
+     ,minio.output.date_dim
+     ,minio.output.customer_address
  where wr_returned_date_sk = d_date_sk 
    and d_year =2002
    and wr_returning_addr_sk = ca_address_sk 
@@ -2051,18 +2033,18 @@ with customer_total_return as
        ,c_birth_day,c_birth_month,c_birth_year,c_birth_country,c_login,c_email_address
        ,c_last_review_date_sk,ctr_total_return
  from customer_total_return ctr1
-     ,customer_address
-     ,customer
+     ,minio.output.customer_address
+     ,minio.output.customer
  where ctr1.ctr_total_return &gt; (select avg(ctr_total_return)*1.2
  			  from customer_total_return ctr2 
                   	  where ctr1.ctr_state = ctr2.ctr_state)
        and ca_address_sk = c_current_addr_sk
        and ca_state = &apos;AR&apos;
        and ctr1.ctr_customer_sk = c_customer_sk
-       and rownum &lt;= 100
  order by c_customer_id,c_salutation,c_first_name,c_last_name,c_preferred_cust_flag
                   ,c_birth_day,c_birth_month,c_birth_year,c_birth_country,c_login,c_email_address
                   ,c_last_review_date_sk,ctr_total_return
+limit 100;
 </stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -2071,6 +2053,7 @@ with customer_total_return as
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2085,6 +2068,7 @@ with customer_total_return as
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 31" enabled="true">
@@ -2092,13 +2076,13 @@ with customer_total_return as
           <stringProp name="query">-- start query 30 in stream 0 using template query31.tpl
 with ss as
  (select ca_county,d_qoy, d_year,sum(ss_ext_sales_price) as store_sales
- from store_sales,date_dim,customer_address
+ from minio.output.store_sales,minio.output.date_dim,minio.output.customer_address
  where ss_sold_date_sk = d_date_sk
   and ss_addr_sk=ca_address_sk
  group by ca_county,d_qoy, d_year),
  ws as
  (select ca_county,d_qoy, d_year,sum(ws_ext_sales_price) as web_sales
- from web_sales,date_dim,customer_address
+ from minio.output.web_sales,minio.output.date_dim,minio.output.customer_address
  where ws_sold_date_sk = d_date_sk
   and ws_bill_addr_sk=ca_address_sk
  group by ca_county,d_qoy, d_year)
@@ -2138,7 +2122,7 @@ with ss as
        &gt; case when ss1.store_sales &gt; 0 then ss2.store_sales/ss1.store_sales else null end
     and case when ws2.web_sales &gt; 0 then ws3.web_sales/ws2.web_sales else null end
        &gt; case when ss2.store_sales &gt; 0 then ss3.store_sales/ss2.store_sales else null end
- order by ss1.ca_county</stringProp>
+ order by ss1.ca_county;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -2146,6 +2130,7 @@ with ss as
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2160,6 +2145,7 @@ with ss as
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 32" enabled="false">
@@ -2198,6 +2184,7 @@ limit 100;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Date refactoring</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2212,6 +2199,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 33" enabled="true">
@@ -2221,15 +2209,15 @@ with ss as (
  select
           i_manufact_id,sum(ss_ext_sales_price) total_sales
  from
- 	store_sales,
- 	date_dim,
-         customer_address,
-         item
+ 	minio.output.store_sales,
+ 	minio.output.date_dim,
+         minio.output.customer_address,
+         minio.output.item
  where
          i_manufact_id in (select
   i_manufact_id
 from
- item
+ minio.output.item
 where i_category in (&apos;Home&apos;))
  and     ss_item_sk              = i_item_sk
  and     ss_sold_date_sk         = d_date_sk
@@ -2242,15 +2230,15 @@ where i_category in (&apos;Home&apos;))
  select
           i_manufact_id,sum(cs_ext_sales_price) total_sales
  from
- 	catalog_sales,
- 	date_dim,
-         customer_address,
-         item
+ 	minio.output.catalog_sales,
+ 	minio.output.date_dim,
+         minio.output.customer_address,
+         minio.output.item
  where
          i_manufact_id               in (select
   i_manufact_id
 from
- item
+ minio.output.item
 where i_category in (&apos;Home&apos;))
  and     cs_item_sk              = i_item_sk
  and     cs_sold_date_sk         = d_date_sk
@@ -2263,15 +2251,15 @@ where i_category in (&apos;Home&apos;))
  select
           i_manufact_id,sum(ws_ext_sales_price) total_sales
  from
- 	web_sales,
- 	date_dim,
-         customer_address,
-         item
+ 	minio.output.web_sales,
+ 	minio.output.date_dim,
+         minio.output.customer_address,
+         minio.output.item
  where
          i_manufact_id               in (select
   i_manufact_id
 from
- item
+ minio.output.item
 where i_category in (&apos;Home&apos;))
  and     ws_item_sk              = i_item_sk
  and     ws_sold_date_sk         = d_date_sk
@@ -2286,10 +2274,9 @@ where i_category in (&apos;Home&apos;))
         select * from cs 
         union all
         select * from ws) tmp1
- where rownum &lt;= 100
  group by i_manufact_id
  order by total_sales
-</stringProp>
+limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -2297,6 +2284,7 @@ where i_category in (&apos;Home&apos;))
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2311,6 +2299,7 @@ where i_category in (&apos;Home&apos;))
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 34" enabled="false">
@@ -2325,7 +2314,7 @@ select c_last_name
    (select ss_ticket_number
           ,ss_customer_sk
           ,count(*) cnt
-    from store_sales,date_dim,store,household_demographics
+    from minio.output.store_sales,minio.output.date_dim,minio.output.store,minio.output.household_demographics
     where store_sales.ss_sold_date_sk = date_dim.d_date_sk
     and store_sales.ss_store_sk = store.s_store_sk  
     and store_sales.ss_hdemo_sk = household_demographics.hd_demo_sk
@@ -2353,6 +2342,7 @@ select c_last_name
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">unable to parse</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2367,6 +2357,7 @@ select c_last_name
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 35" enabled="false">
@@ -2392,24 +2383,24 @@ select
   sum(cd_dep_college_count),
   sum(cd_dep_college_count)
  from
-  customer c,customer_address ca,customer_demographics
+  minio.output.customer c,minio.output.customer_address ca,minio.output.customer_demographics
  where
   c.c_current_addr_sk = ca.ca_address_sk and
   cd_demo_sk = c.c_current_cdemo_sk and 
   exists (select *
-          from store_sales,date_dim
+          from minio.output.store_sales,minio.output.date_dim
           where c.c_customer_sk = ss_customer_sk and
                 ss_sold_date_sk = d_date_sk and
                 d_year = 1999 and
                 d_qoy &lt; 4) and
    (exists (select *
-            from web_sales,date_dim
+            from minio.output.web_sales,minio.output.date_dim
             where c.c_customer_sk = ws_bill_customer_sk and
                   ws_sold_date_sk = d_date_sk and
                   d_year = 1999 and
                   d_qoy &lt; 4) or 
     exists (select * 
-            from catalog_sales,date_dim
+            from minio.output.catalog_sales,minio.output.date_dim
             where c.c_customer_sk = cs_ship_customer_sk and
                   cs_sold_date_sk = d_date_sk and
                   d_year = 1999 and
@@ -2435,6 +2426,7 @@ select
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Out of memory error</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2449,6 +2441,7 @@ select
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 36" enabled="false">
@@ -2464,10 +2457,10 @@ select
  	case when grouping(i_class) = 0 then i_category end 
  	order by sum(ss_net_profit)/sum(ss_ext_sales_price) asc) as rank_within_parent
  from
-    store_sales
-   ,date_dim       d1
-   ,item
-   ,store
+    minio.output.store_sales
+   ,minio.output.date_dim       d1
+   ,minio.output.item
+   ,minio.output.store
  where
     d1.d_year = 1998 
  and d1.d_date_sk = ss_sold_date_sk
@@ -2490,6 +2483,7 @@ select
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Grouping, Grouping_ID, Group_ID are not supported.</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2504,6 +2498,7 @@ select
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 37" enabled="false">
@@ -2512,7 +2507,7 @@ select
 select  i_item_id
        ,i_item_desc
        ,i_current_price
- from item, inventory, date_dim, catalog_sales
+ from minio.output.item, minio.output.inventory, minio.output.date_dim, minio.output.catalog_sales
  where i_current_price between 34 and 34 + 30
  and inv_item_sk = i_item_sk
  and d_date_sk=inv_date_sk
@@ -2531,6 +2526,7 @@ select  i_item_id
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Date math issue</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2545,6 +2541,7 @@ select  i_item_id
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 38" enabled="false">
@@ -2578,6 +2575,7 @@ limit 100;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Inserset command</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2592,6 +2590,7 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 39" enabled="false">
@@ -2602,10 +2601,10 @@ with inv as
        ,stdev,mean, case mean when 0 then null else stdev/mean end cov
  from(select w_warehouse_name,w_warehouse_sk,i_item_sk,d_moy
             ,stddev_samp(inv_quantity_on_hand) stdev,avg(inv_quantity_on_hand) mean
-      from inventory
-          ,item
-          ,warehouse
-          ,date_dim
+      from minio.output.inventory
+          ,minio.output.item
+          ,minio.output.warehouse
+          ,minio.output.date_dim
       where inv_item_sk = i_item_sk
         and inv_warehouse_sk = w_warehouse_sk
         and inv_date_sk = d_date_sk
@@ -2627,10 +2626,10 @@ with inv as
        ,stdev,mean, case mean when 0 then null else stdev/mean end cov
  from(select w_warehouse_name,w_warehouse_sk,i_item_sk,d_moy
             ,stddev_samp(inv_quantity_on_hand) stdev,avg(inv_quantity_on_hand) mean
-      from inventory
-          ,item
-          ,warehouse
-          ,date_dim
+      from minio.output.inventory
+          ,minio.output.item
+          ,minio.output.warehouse
+          ,minio.output.date_dim
       where inv_item_sk = i_item_sk
         and inv_warehouse_sk = w_warehouse_sk
         and inv_date_sk = d_date_sk
@@ -2657,6 +2656,7 @@ order by inv1.w_warehouse_sk,inv1.i_item_sk,inv1.d_moy,inv1.mean,inv1.cov
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Parsing Problem</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2671,6 +2671,7 @@ order by inv1.w_warehouse_sk,inv1.i_item_sk,inv1.d_moy,inv1.mean,inv1.cov
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 40" enabled="false">
@@ -2684,12 +2685,12 @@ select
   ,sum(case when (cast(d_date as date) &gt;= cast (&apos;2000-03-25&apos; as date)) 
  		then cs_sales_price - coalesce(cr_refunded_cash,0) else 0 end) as sales_after
  from
-   catalog_sales left outer join catalog_returns on
+   minio.output.catalog_sales left outer join minio.output.catalog_returns on
        (cs_order_number = cr_order_number 
         and cs_item_sk = cr_item_sk)
-  ,warehouse 
-  ,item
-  ,date_dim
+  ,minio.output.warehouse 
+  ,minio.output.item
+  ,minio.output.date_dim
  where
      i_current_price between 0.99 and 1.49
  and i_item_sk          = cs_item_sk
@@ -2709,6 +2710,7 @@ limit 100;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Date math</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2723,16 +2725,17 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 41" enabled="false">
           <stringProp name="dataSource">dremio_connection</stringProp>
           <stringProp name="query">-- start query 40 in stream 0 using template query41.tpl
 select  distinct(i_product_name)
- from item i1
+ from minio.output.item i1
  where i_manufact_id between 982 and 982+40 
    and (select count(*) as item_cnt
-        from item
+        from minio.output.item
         where (i_manufact = i1.i_manufact and
         ((i_category = &apos;Women&apos; and 
         (i_color = &apos;frosted&apos; or i_color = &apos;linen&apos;) and 
@@ -2785,6 +2788,7 @@ select  distinct(i_product_name)
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Dremio doesn&apos;t currently support non-scalar sub-queries used in an expression</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2799,6 +2803,7 @@ select  distinct(i_product_name)
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 42" enabled="true">
@@ -2808,22 +2813,21 @@ select  dt.d_year
  	,item.i_category_id
  	,item.i_category
  	,sum(ss_ext_sales_price)
- from 	date_dim dt
- 	,store_sales
- 	,item
+ from 	minio.output.date_dim dt
+ 	,minio.output.store_sales
+ 	,minio.output.item
  where dt.d_date_sk = store_sales.ss_sold_date_sk
  	and store_sales.ss_item_sk = item.i_item_sk
  	and item.i_manager_id = 1  	
  	and dt.d_moy=11
  	and dt.d_year=1998
- 	and rownum &lt;= 100
  group by 	dt.d_year
  		,item.i_category_id
  		,item.i_category
  order by       sum(ss_ext_sales_price) desc,dt.d_year
  		,item.i_category_id
  		,item.i_category
-</stringProp>
+limit 100 ;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -2832,6 +2836,7 @@ select  dt.d_year
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Out of memory error</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2846,6 +2851,7 @@ select  dt.d_year
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 43" enabled="true">
@@ -2859,15 +2865,14 @@ select  s_store_name, s_store_id,
         sum(case when (d_day_name=&apos;Thursday&apos;) then ss_sales_price else null end) thu_sales,
         sum(case when (d_day_name=&apos;Friday&apos;) then ss_sales_price else null end) fri_sales,
         sum(case when (d_day_name=&apos;Saturday&apos;) then ss_sales_price else null end) sat_sales
- from date_dim, store_sales, store
+ from minio.output.date_dim, minio.output.store_sales, minio.output.store
  where d_date_sk = ss_sold_date_sk and
        s_store_sk = ss_store_sk and
        s_gmt_offset = -5 and
        d_year = 2000 
-       and rownum &lt;= 100
  group by s_store_name, s_store_id
  order by s_store_name, s_store_id,sun_sales,mon_sales,tue_sales,wed_sales,thu_sales,fri_sales,sat_sales
-
+ limit 100;
 </stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -2876,6 +2881,7 @@ select  s_store_name, s_store_id,
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2890,6 +2896,7 @@ select  s_store_name, s_store_id,
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 44" enabled="false">
@@ -2899,11 +2906,11 @@ select  asceding.rnk, i1.i_product_name best_performing, i2.i_product_name worst
 from(select *
      from (select item_sk,rank() over (order by rank_col asc) rnk
            from (select ss_item_sk item_sk,avg(ss_net_profit) rank_col 
-                 from store_sales ss1
+                 from minio.output.store_sales ss1
                  where ss_store_sk = 2
                  group by ss_item_sk
                  having avg(ss_net_profit) &gt; 0.9*(select avg(ss_net_profit) rank_col
-                                                  from store_sales
+                                                  from minio.output.store_sales
                                                   where ss_store_sk = 2
                                                     and ss_addr_sk is null
                                                   group by ss_store_sk))V1)V11
@@ -2911,17 +2918,17 @@ from(select *
     (select *
      from (select item_sk,rank() over (order by rank_col desc) rnk
            from (select ss_item_sk item_sk,avg(ss_net_profit) rank_col
-                 from store_sales ss1
+                 from minio.output.store_sales ss1
                  where ss_store_sk = 2
                  group by ss_item_sk
                  having avg(ss_net_profit) &gt; 0.9*(select avg(ss_net_profit) rank_col
-                                                  from store_sales
+                                                  from minio.output.store_sales
                                                   where ss_store_sk = 2
                                                     and ss_addr_sk is null
                                                   group by ss_store_sk))V2)V21
      where rnk  &lt; 11) descending,
-item i1,
-item i2
+minio.output.item i1,
+minio.output.item i2
 where asceding.rnk = descending.rnk 
   and i1.i_item_sk=asceding.item_sk
   and i2.i_item_sk=descending.item_sk
@@ -2935,6 +2942,7 @@ limit 100;</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Dremio doesn&apos;t currently support non-scalar sub-queries used in an expression</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2949,29 +2957,29 @@ limit 100;</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 45" enabled="true">
           <stringProp name="dataSource">dremio_connection</stringProp>
           <stringProp name="query">-- start query 44 in stream 0 using template query45.tpl
 select  ca_zip, ca_county, sum(ws_sales_price)
- from web_sales, customer, customer_address, date_dim, item
+ from minio.output.web_sales, minio.output.customer, minio.output.customer_address, minio.output.date_dim, minio.output.item
  where ws_bill_customer_sk = c_customer_sk
  	and c_current_addr_sk = ca_address_sk 
  	and ws_item_sk = i_item_sk 
  	and ( substr(ca_zip,1,5) in (&apos;85669&apos;, &apos;86197&apos;,&apos;88274&apos;,&apos;83405&apos;,&apos;86475&apos;, &apos;85392&apos;, &apos;85460&apos;, &apos;80348&apos;, &apos;81792&apos;)
  	      or 
  	      i_item_id in (select i_item_id
-                             from item
+                             from minio.output.item
                              where i_item_sk in (2, 3, 5, 7, 11, 13, 17, 19, 23, 29)
                              )
  	    )
  	and ws_sold_date_sk = d_date_sk
  	and d_qoy = 2 and d_year = 2000
- 	and rownum &lt;= 100
  group by ca_zip, ca_county
  order by ca_zip, ca_county
-
+ limit 100;
 </stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -2981,6 +2989,7 @@ select  ca_zip, ca_county, sum(ws_sales_price)
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Inserset command</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -2995,6 +3004,7 @@ select  ca_zip, ca_county, sum(ws_sales_price)
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 46" enabled="true">
@@ -3012,7 +3022,7 @@ select  c_last_name
           ,ca_city bought_city
           ,sum(ss_coupon_amt) amt
           ,sum(ss_net_profit) profit
-    from store_sales,date_dim,store,household_demographics,customer_address 
+    from minio.output.store_sales,minio.output.date_dim,minio.output.store,minio.output.household_demographics,minio.output.customer_address 
     where store_sales.ss_sold_date_sk = date_dim.d_date_sk
     and store_sales.ss_store_sk = store.s_store_sk  
     and store_sales.ss_hdemo_sk = household_demographics.hd_demo_sk
@@ -3022,17 +3032,16 @@ select  c_last_name
     and date_dim.d_dow in (6,0)
     and date_dim.d_year in (1999,1999+1,1999+2) 
     and store.s_city in (&apos;Midway&apos;,&apos;Fairview&apos;,&apos;Fairview&apos;,&apos;Midway&apos;,&apos;Fairview&apos;) 
-    group by ss_ticket_number,ss_customer_sk,ss_addr_sk,ca_city) dn,customer,customer_address current_addr
+    group by ss_ticket_number,ss_customer_sk,ss_addr_sk,ca_city) dn,minio.output.customer,minio.output.customer_address current_addr
     where ss_customer_sk = c_customer_sk
       and customer.c_current_addr_sk = current_addr.ca_address_sk
       and current_addr.ca_city &lt;&gt; bought_city
-      and rownum &lt;= 100
   order by c_last_name
           ,c_first_name
           ,ca_city
           ,bought_city
           ,ss_ticket_number
-</stringProp>
+  limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -3040,6 +3049,7 @@ select  c_last_name
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3054,6 +3064,7 @@ select  c_last_name
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 47" enabled="true">
@@ -3072,7 +3083,7 @@ with v1 as(
           (partition by i_category, i_brand,
                      s_store_name, s_company_name
            order by d_year, d_moy) rn
- from item, store_sales, date_dim, store
+ from minio.output.item, minio.output.store_sales, minio.output.date_dim, minio.output.store
  where ss_item_sk = i_item_sk and
        ss_sold_date_sk = d_date_sk and
        ss_store_sk = s_store_sk and
@@ -3105,9 +3116,8 @@ with v1 as(
  where  d_year = 1999 and    
         avg_monthly_sales &gt; 0 and
         case when avg_monthly_sales &gt; 0 then abs(sum_sales - avg_monthly_sales) / avg_monthly_sales else null end &gt; 0.1
-        and rownum &lt;= 100
  order by sum_sales - avg_monthly_sales, psum
-</stringProp>
+ limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -3115,6 +3125,7 @@ with v1 as(
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3129,13 +3140,14 @@ with v1 as(
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 48" enabled="false">
           <stringProp name="dataSource">dremio_connection</stringProp>
           <stringProp name="query">-- start query 47 in stream 0 using template query48.tpl
 select sum (ss_quantity)
- from store_sales, store, customer_demographics, customer_address, date_dim
+ from minio.output.store_sales, minio.output.store, minio.output.customer_demographics, minio.output.customer_address, minio.output.date_dim
  where s_store_sk = ss_store_sk
  and  ss_sold_date_sk = d_date_sk and d_year = 1999
  and  
@@ -3205,6 +3217,7 @@ select sum (ss_quantity)
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3219,131 +3232,138 @@ select sum (ss_quantity)
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 49" enabled="true">
           <stringProp name="dataSource">dremio_connection</stringProp>
           <stringProp name="query">-- start query 48 in stream 0 using template query49.tpl
-select channel, item, return_ratio, return_rank, currency_rank
-from (select &apos;web&apos; as channel
-           , web.item
-           , web.return_ratio
-           , web.return_rank
-           , web.currency_rank
-      from (
-               select item
-                    , return_ratio
-                    , currency_ratio
-                    , rank() over (order by return_ratio)   as return_rank
-                    , rank() over (order by currency_ratio) as currency_rank
-               from (select ws.ws_item_sk                                            as item
-                          , (
-                           cast(sum(coalesce(wr.wr_return_quantity, 0)) as decimal(15, 4)) /
-                           cast(sum(coalesce(ws.ws_quantity, 0)) as decimal(15, 4))) as return_ratio
-                          , (
-                           cast(sum(coalesce(wr.wr_return_amt, 0)) as decimal(15, 4)) /
-                           cast(sum(coalesce(ws.ws_net_paid, 0)) as decimal(15, 4))) as currency_ratio
-                     from web_sales ws
-                              left outer join web_returns wr
-                                              on (ws.ws_order_number = wr.wr_order_number and
-                                                  ws.ws_item_sk = wr.wr_item_sk)
-                        , date_dim
-                     where wr.wr_return_amt &gt; 10000
-                       and ws.ws_net_profit &gt; 1
-                       and ws.ws_net_paid &gt; 0
-                       and ws.ws_quantity &gt; 0
-                       and ws_sold_date_sk = d_date_sk
-                       and d_year = 1998
-                       and d_moy = 12
-                     group by ws.ws_item_sk
-                    ) in_web
-           ) web
-      where (
-                    web.return_rank &lt;= 10
-                    or
-                    web.currency_rank &lt;= 10
-                )
-      union
-      select &apos;catalog&apos; as channel
-           , catalog.item
-           , catalog.return_ratio
-           , catalog.return_rank
-           , catalog.currency_rank
-      from (
-               select item
-                    , return_ratio
-                    , currency_ratio
-                    , rank() over (order by return_ratio)   as return_rank
-                    , rank() over (order by currency_ratio) as currency_rank
-               from (select cs.cs_item_sk                                            as item
-                          , (
-                           cast(sum(coalesce(cr.cr_return_quantity, 0)) as decimal(15, 4)) /
-                           cast(sum(coalesce(cs.cs_quantity, 0)) as decimal(15, 4))) as return_ratio
-                          , (
-                           cast(sum(coalesce(cr.cr_return_amount, 0)) as decimal(15, 4)) /
-                           cast(sum(coalesce(cs.cs_net_paid, 0)) as decimal(15, 4))) as currency_ratio
-                     from catalog_sales cs
-                              left outer join catalog_returns cr
-                                              on (cs.cs_order_number = cr.cr_order_number and
-                                                  cs.cs_item_sk = cr.cr_item_sk)
-                        , date_dim
-                     where cr.cr_return_amount &gt; 10000
-                       and cs.cs_net_profit &gt; 1
-                       and cs.cs_net_paid &gt; 0
-                       and cs.cs_quantity &gt; 0
-                       and cs_sold_date_sk = d_date_sk
-                       and d_year = 1998
-                       and d_moy = 12
-                     group by cs.cs_item_sk
-                    ) in_cat
-           ) catalog
-      where (
-                    catalog.return_rank &lt;= 10
-                    or
-                    catalog.currency_rank &lt;= 10
-                )
-      union
-      select &apos;store&apos; as channel
-           , store.item
-           , store.return_ratio
-           , store.return_rank
-           , store.currency_rank
-      from (
-               select item
-                    , return_ratio
-                    , currency_ratio
-                    , rank() over (order by return_ratio)   as return_rank
-                    , rank() over (order by currency_ratio) as currency_rank
-               from (select sts.ss_item_sk                                            as item
-                          , (
-                           cast(sum(coalesce(sr.sr_return_quantity, 0)) as decimal(15, 4)) /
-                           cast(sum(coalesce(sts.ss_quantity, 0)) as decimal(15, 4))) as return_ratio
-                          , (
-                           cast(sum(coalesce(sr.sr_return_amt, 0)) as decimal(15, 4)) /
-                           cast(sum(coalesce(sts.ss_net_paid, 0)) as decimal(15, 4))) as currency_ratio
-                     from store_sales sts
-                              left outer join store_returns sr
-                                              on (sts.ss_ticket_number = sr.sr_ticket_number and
-                                                  sts.ss_item_sk = sr.sr_item_sk)
-                        , date_dim
-                     where sr.sr_return_amt &gt; 10000
-                       and sts.ss_net_profit &gt; 1
-                       and sts.ss_net_paid &gt; 0
-                       and sts.ss_quantity &gt; 0
-                       and ss_sold_date_sk = d_date_sk
-                       and d_year = 1998
-                       and d_moy = 12
-                     group by sts.ss_item_sk
-                    ) in_store
-           ) store
-      where (
-                    store.return_rank &lt;= 10
-                    or
-                    store.currency_rank &lt;= 10
-                )
-     )
-where rownum &lt;= 100
-order by 1, 4, 5, 2
+select  channel, item, return_ratio, return_rank, currency_rank from
+ (select
+ &apos;web&apos; as channel
+ ,web.item
+ ,web.return_ratio
+ ,web.return_rank
+ ,web.currency_rank
+ from (
+ 	select 
+ 	 item
+ 	,return_ratio
+ 	,currency_ratio
+ 	,rank() over (order by return_ratio) as return_rank
+ 	,rank() over (order by currency_ratio) as currency_rank
+ 	from
+ 	(	select ws.ws_item_sk as item
+ 		,(cast(sum(coalesce(wr.wr_return_quantity,0)) as decimal(15,4))/
+ 		cast(sum(coalesce(ws.ws_quantity,0)) as decimal(15,4) )) as return_ratio
+ 		,(cast(sum(coalesce(wr.wr_return_amt,0)) as decimal(15,4))/
+ 		cast(sum(coalesce(ws.ws_net_paid,0)) as decimal(15,4) )) as currency_ratio
+ 		from 
+ 		 minio.output.web_sales ws left outer join minio.output.web_returns wr 
+ 			on (ws.ws_order_number = wr.wr_order_number and 
+ 			ws.ws_item_sk = wr.wr_item_sk)
+                 ,minio.output.date_dim
+ 		where 
+ 			wr.wr_return_amt &gt; 10000 
+ 			and ws.ws_net_profit &gt; 1
+                         and ws.ws_net_paid &gt; 0
+                         and ws.ws_quantity &gt; 0
+                         and ws_sold_date_sk = d_date_sk
+                         and d_year = 1998
+                         and d_moy = 12
+ 		group by ws.ws_item_sk
+ 	) in_web
+ ) web
+ where 
+ (
+ web.return_rank &lt;= 10
+ or
+ web.currency_rank &lt;= 10
+ )
+ union
+ select 
+ &apos;catalog&apos; as channel
+ ,catalog.item
+ ,catalog.return_ratio
+ ,catalog.return_rank
+ ,catalog.currency_rank
+ from (
+ 	select 
+ 	 item
+ 	,return_ratio
+ 	,currency_ratio
+ 	,rank() over (order by return_ratio) as return_rank
+ 	,rank() over (order by currency_ratio) as currency_rank
+ 	from
+ 	(	select 
+ 		cs.cs_item_sk as item
+ 		,(cast(sum(coalesce(cr.cr_return_quantity,0)) as decimal(15,4))/
+ 		cast(sum(coalesce(cs.cs_quantity,0)) as decimal(15,4) )) as return_ratio
+ 		,(cast(sum(coalesce(cr.cr_return_amount,0)) as decimal(15,4))/
+ 		cast(sum(coalesce(cs.cs_net_paid,0)) as decimal(15,4) )) as currency_ratio
+ 		from 
+ 		minio.output.catalog_sales cs left outer join minio.output.catalog_returns cr
+ 			on (cs.cs_order_number = cr.cr_order_number and 
+ 			cs.cs_item_sk = cr.cr_item_sk)
+                ,minio.output.date_dim
+ 		where 
+ 			cr.cr_return_amount &gt; 10000 
+ 			and cs.cs_net_profit &gt; 1
+                         and cs.cs_net_paid &gt; 0
+                         and cs.cs_quantity &gt; 0
+                         and cs_sold_date_sk = d_date_sk
+                         and d_year = 1998
+                         and d_moy = 12
+                 group by cs.cs_item_sk
+ 	) in_cat
+ ) catalog
+ where 
+ (
+ catalog.return_rank &lt;= 10
+ or
+ catalog.currency_rank &lt;=10
+ )
+ union
+ select 
+ &apos;store&apos; as channel
+ ,store.item
+ ,store.return_ratio
+ ,store.return_rank
+ ,store.currency_rank
+ from (
+ 	select 
+ 	 item
+ 	,return_ratio
+ 	,currency_ratio
+ 	,rank() over (order by return_ratio) as return_rank
+ 	,rank() over (order by currency_ratio) as currency_rank
+ 	from
+ 	(	select sts.ss_item_sk as item
+ 		,(cast(sum(coalesce(sr.sr_return_quantity,0)) as decimal(15,4))/cast(sum(coalesce(sts.ss_quantity,0)) as decimal(15,4) )) as return_ratio
+ 		,(cast(sum(coalesce(sr.sr_return_amt,0)) as decimal(15,4))/cast(sum(coalesce(sts.ss_net_paid,0)) as decimal(15,4) )) as currency_ratio
+ 		from 
+ 		minio.output.store_sales sts left outer join minio.output.store_returns sr
+ 			on (sts.ss_ticket_number = sr.sr_ticket_number and sts.ss_item_sk = sr.sr_item_sk)
+                ,minio.output.date_dim
+ 		where 
+ 			sr.sr_return_amt &gt; 10000 
+ 			and sts.ss_net_profit &gt; 1
+                         and sts.ss_net_paid &gt; 0 
+                         and sts.ss_quantity &gt; 0
+                         and ss_sold_date_sk = d_date_sk
+                         and d_year = 1998
+                         and d_moy = 12
+ 		group by sts.ss_item_sk
+ 	) in_store
+ ) store
+ where  (
+ store.return_rank &lt;= 10
+ or 
+ store.currency_rank &lt;= 10
+ )
+ )
+ order by 1,4,5,2
+ limit 100;
 </stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -3352,6 +3372,7 @@ order by 1, 4, 5, 2
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3366,6 +3387,7 @@ order by 1, 4, 5, 2
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 50" enabled="true">
@@ -3391,11 +3413,11 @@ select
                  (sr_returned_date_sk - ss_sold_date_sk &lt;= 120) then 1 else 0 end)  as &quot;91-120 days&quot; 
   ,sum(case when (sr_returned_date_sk - ss_sold_date_sk  &gt; 120) then 1 else 0 end)  as &quot;&gt;120 days&quot; 
 from
-   store_sales
-  ,store_returns
-  ,store
-  ,date_dim d1
-  ,date_dim d2
+   minio.output.store_sales
+  ,minio.output.store_returns
+  ,minio.output.store
+  ,minio.output.date_dim d1
+  ,minio.output.date_dim d2
 where
     d2.d_year = 1998
 and d2.d_moy  = 10
@@ -3405,7 +3427,6 @@ and ss_sold_date_sk   = d1.d_date_sk
 and sr_returned_date_sk   = d2.d_date_sk
 and ss_customer_sk = sr_customer_sk
 and ss_store_sk = s_store_sk
-and rownum &lt;= 100
 group by
    s_store_name
   ,s_company_id
@@ -3427,7 +3448,7 @@ order by s_store_name
         ,s_county
         ,s_state
         ,s_zip
-
+limit 100;
 </stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -3436,6 +3457,7 @@ order by s_store_name
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3450,6 +3472,7 @@ order by s_store_name
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 51" enabled="true">
@@ -3460,8 +3483,8 @@ select
   ws_item_sk item_sk, d_date,
   sum(sum(ws_sales_price))
       over (partition by ws_item_sk order by d_date rows between unbounded preceding and current row) cume_sales
-from web_sales
-    ,date_dim
+from minio.output.web_sales
+    ,minio.output.date_dim
 where ws_sold_date_sk=d_date_sk
   and d_month_seq between 1208 and 1208+11
   and ws_item_sk is not NULL
@@ -3471,8 +3494,8 @@ select
   ss_item_sk item_sk, d_date,
   sum(sum(ss_sales_price))
       over (partition by ss_item_sk order by d_date rows between unbounded preceding and current row) cume_sales
-from store_sales
-    ,date_dim
+from minio.output.store_sales
+    ,minio.output.date_dim
 where ss_sold_date_sk=d_date_sk
   and d_month_seq between 1208 and 1208+11
   and ss_item_sk is not NULL
@@ -3493,10 +3516,10 @@ from (select item_sk
            from web_v1 web full outer join store_v1 store on (web.item_sk = store.item_sk
                                                           and web.d_date = store.d_date)
           )x )y
-where web_cumulative &gt; store_cumulative and rownum &lt;= 100
+where web_cumulative &gt; store_cumulative
 order by item_sk
         ,d_date
-
+limit 100;
 </stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -3505,6 +3528,7 @@ order by item_sk
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3519,6 +3543,7 @@ order by item_sk
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 52" enabled="true">
@@ -3528,21 +3553,21 @@ select  dt.d_year
  	,item.i_brand_id brand_id
  	,item.i_brand brand
  	,sum(ss_ext_sales_price) ext_price
- from date_dim dt
-     ,store_sales
-     ,item
+ from minio.output.date_dim dt
+     ,minio.output.store_sales
+     ,minio.output.item
  where dt.d_date_sk = store_sales.ss_sold_date_sk
     and store_sales.ss_item_sk = item.i_item_sk
     and item.i_manager_id = 1
     and dt.d_moy=12
-    and dt.d_year=2002 and rownum &lt;= 100
+    and dt.d_year=2002
  group by dt.d_year
  	,item.i_brand
  	,item.i_brand_id
  order by dt.d_year
  	,ext_price desc
  	,brand_id
-
+limit 100 ;
 </stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -3551,6 +3576,7 @@ select  dt.d_year
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3565,6 +3591,7 @@ select  dt.d_year
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Oracle 53" enabled="true">
@@ -3574,7 +3601,7 @@ select  * from
 (select i_manufact_id,
 sum(ss_sales_price) sum_sales,
 avg(sum(ss_sales_price)) over (partition by i_manufact_id) avg_quarterly_sales
-from item, store_sales, date_dim, store
+from minio.output.item, minio.output.store_sales, minio.output.date_dim, minio.output.store
 where ss_item_sk = i_item_sk and
 ss_sold_date_sk = d_date_sk and
 ss_store_sk = s_store_sk and
@@ -3588,14 +3615,13 @@ i_class in (&apos;accessories&apos;,&apos;classical&apos;,&apos;fragrances&apos;
 i_brand in (&apos;amalgimporto #1&apos;,&apos;edu packscholar #1&apos;,&apos;exportiimporto #1&apos;,
 		&apos;importoamalg #1&apos;)))
 group by i_manufact_id, d_qoy ) tmp1
-where (case when avg_quarterly_sales &gt; 0 
+where case when avg_quarterly_sales &gt; 0 
 	then abs (sum_sales - avg_quarterly_sales)/ avg_quarterly_sales 
-	else null end &gt; 0.1)
-	and rownum &lt;= 100
+	else null end &gt; 0.1
 order by avg_quarterly_sales,
 	 sum_sales,
 	 i_manufact_id
-</stringProp>
+limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -3604,6 +3630,7 @@ order by avg_quarterly_sales,
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Out of memory error</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3618,6 +3645,7 @@ order by avg_quarterly_sales,
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 54" enabled="false">
@@ -3630,16 +3658,16 @@ with my_customers as (
         ( select cs_sold_date_sk sold_date_sk,
                  cs_bill_customer_sk customer_sk,
                  cs_item_sk item_sk
-          from   catalog_sales
+          from   minio.output.catalog_sales
           union all
           select ws_sold_date_sk sold_date_sk,
                  ws_bill_customer_sk customer_sk,
                  ws_item_sk item_sk
-          from   web_sales
+          from   minio.output.web_sales
          ) cs_or_ws_sales,
-         item,
-         date_dim,
-         customer
+         minio.output.item,
+         minio.output.date_dim,
+         minio.output.customer
  where   sold_date_sk = d_date_sk
          and item_sk = i_item_sk
          and i_category = &apos;Home&apos;
@@ -3652,19 +3680,19 @@ with my_customers as (
  select c_customer_sk,
         sum(ss_ext_sales_price) as revenue
  from   my_customers,
-        store_sales,
-        customer_address,
-        store,
-        date_dim
+       minio.output. store_sales,
+        minio.output.customer_address,
+        minio.output.store,
+        minio.output.date_dim
  where  c_current_addr_sk = ca_address_sk
         and ca_county = s_county
         and ca_state = s_state
         and ss_sold_date_sk = d_date_sk
         and c_customer_sk = ss_customer_sk
         and d_month_seq between (select distinct d_month_seq+1
-                                 from    date_dim where d_year = 2002 and d_moy = 4)
+                                 from    minio.output.date_dim where d_year = 2002 and d_moy = 4)
                            and  (select distinct d_month_seq+3
-                                 from    date_dim where d_year = 2002 and d_moy = 4)
+                                 from    minio.output.date_dim where d_year = 2002 and d_moy = 4)
  group by c_customer_sk
  )
  , segments as
@@ -3684,6 +3712,7 @@ with my_customers as (
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Dremio doesn&apos;t currently support non-scalar sub-queries used in an expression</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3698,6 +3727,7 @@ with my_customers as (
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 55" enabled="true">
@@ -3705,16 +3735,15 @@ with my_customers as (
           <stringProp name="query">-- start query 54 in stream 0 using template query55.tpl
 select  i_brand_id brand_id, i_brand brand,
  	sum(ss_ext_sales_price) ext_price
- from date_dim, store_sales, item
+ from minio.output.date_dim, minio.output.store_sales, minio.output.item
  where d_date_sk = ss_sold_date_sk
  	and ss_item_sk = i_item_sk
  	and i_manager_id=27
  	and d_moy=12
  	and d_year=2001
- 	and rownum &lt;= 100
  group by i_brand, i_brand_id
  order by ext_price desc, i_brand_id
-
+limit 100 ;
 </stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
@@ -3723,6 +3752,7 @@ select  i_brand_id brand_id, i_brand brand,
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3737,6 +3767,7 @@ select  i_brand_id brand_id, i_brand brand,
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 56" enabled="true">
@@ -3745,13 +3776,13 @@ select  i_brand_id brand_id, i_brand brand,
 with ss as (
  select i_item_id,sum(ss_ext_sales_price) total_sales
  from
- 	store_sales,
- 	date_dim,
-         customer_address,
-         item
+ 	minio.output.store_sales,
+ 	minio.output.date_dim,
+         minio.output.customer_address,
+         minio.output.item
  where i_item_id in (select
      i_item_id
-from item
+from minio.output.item
 where i_color in (&apos;puff&apos;,&apos;slate&apos;,&apos;ivory&apos;))
  and     ss_item_sk              = i_item_sk
  and     ss_sold_date_sk         = d_date_sk
@@ -3763,14 +3794,14 @@ where i_color in (&apos;puff&apos;,&apos;slate&apos;,&apos;ivory&apos;))
  cs as (
  select i_item_id,sum(cs_ext_sales_price) total_sales
  from
- 	catalog_sales,
- 	date_dim,
-         customer_address,
-         item
+ 	minio.output.catalog_sales,
+ 	minio.output.date_dim,
+         minio.output.customer_address,
+         minio.output.item
  where
          i_item_id               in (select
   i_item_id
-from item
+from minio.output.item
 where i_color in (&apos;puff&apos;,&apos;slate&apos;,&apos;ivory&apos;))
  and     cs_item_sk              = i_item_sk
  and     cs_sold_date_sk         = d_date_sk
@@ -3782,14 +3813,14 @@ where i_color in (&apos;puff&apos;,&apos;slate&apos;,&apos;ivory&apos;))
  ws as (
  select i_item_id,sum(ws_ext_sales_price) total_sales
  from
- 	web_sales,
- 	date_dim,
-         customer_address,
-         item
+ 	minio.output.web_sales,
+ 	minio.output.date_dim,
+         minio.output.customer_address,
+         minio.output.item
  where
          i_item_id               in (select
   i_item_id
-from item
+from minio.output.item
 where i_color in (&apos;puff&apos;,&apos;slate&apos;,&apos;ivory&apos;))
  and     ws_item_sk              = i_item_sk
  and     ws_sold_date_sk         = d_date_sk
@@ -3804,11 +3835,10 @@ where i_color in (&apos;puff&apos;,&apos;slate&apos;,&apos;ivory&apos;))
         select * from cs 
         union all
         select * from ws) tmp1
- where rownum &lt;= 100        
  group by i_item_id
  order by total_sales,
           i_item_id
-</stringProp>
+ limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -3817,6 +3847,7 @@ where i_color in (&apos;puff&apos;,&apos;slate&apos;,&apos;ivory&apos;))
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">Inserset command</stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3831,6 +3862,7 @@ where i_color in (&apos;puff&apos;,&apos;slate&apos;,&apos;ivory&apos;))
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 57" enabled="true">
@@ -3849,7 +3881,7 @@ with v1 as(
           (partition by i_category, i_brand,
                      cc_name
            order by d_year, d_moy) rn
- from item, catalog_sales, date_dim, call_center
+ from minio.output.item, minio.output.catalog_sales, minio.output.date_dim, minio.output.call_center
  where cs_item_sk = i_item_sk and
        cs_sold_date_sk = d_date_sk and
        cc_call_center_sk= cs_call_center_sk and
@@ -3879,9 +3911,8 @@ with v1 as(
  where  d_year = 1999 and
         avg_monthly_sales &gt; 0 and
         case when avg_monthly_sales &gt; 0 then abs(sum_sales - avg_monthly_sales) / avg_monthly_sales else null end &gt; 0.1
-        and rownum &lt;= 100
  order by sum_sales - avg_monthly_sales, avg_monthly_sales
-</stringProp>
+ limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -3889,6 +3920,7 @@ with v1 as(
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3903,6 +3935,7 @@ with v1 as(
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Query 58" enabled="false">
@@ -3911,42 +3944,42 @@ with v1 as(
 with ss_items as
  (select i_item_id item_id
         ,sum(ss_ext_sales_price) ss_item_rev 
- from store_sales
-     ,item
-     ,date_dim
+ from minio.output.store_sales
+     ,minio.output.item
+     ,minio.output.date_dim
  where ss_item_sk = i_item_sk
    and d_date in (select d_date
-                  from date_dim
+                  from minio.output.date_dim
                   where d_week_seq = (select d_week_seq 
-                                      from date_dim
+                                      from minio.output.date_dim
                                       where d_date = &apos;1998-03-27&apos;))
    and ss_sold_date_sk   = d_date_sk
  group by i_item_id),
  cs_items as
  (select i_item_id item_id
         ,sum(cs_ext_sales_price) cs_item_rev
-  from catalog_sales
-      ,item
-      ,date_dim
+  from minio.output.catalog_sales
+      ,minio.output.item
+      ,minio.output.date_dim
  where cs_item_sk = i_item_sk
   and  d_date in (select d_date
-                  from date_dim
+                  from minio.output.date_dim
                   where d_week_seq = (select d_week_seq 
-                                      from date_dim
+                                      from minio.output.date_dim
                                       where d_date = &apos;1998-03-27&apos;))
   and  cs_sold_date_sk = d_date_sk
  group by i_item_id),
  ws_items as
  (select i_item_id item_id
         ,sum(ws_ext_sales_price) ws_item_rev
-  from web_sales
-      ,item
-      ,date_dim
+  from minio.output.web_sales
+      ,minio.output.item
+      ,minio.output.date_dim
  where ws_item_sk = i_item_sk
   and  d_date in (select d_date
-                  from date_dim
+                  from minio.output.date_dim
                   where d_week_seq =(select d_week_seq 
-                                     from date_dim
+                                     from minio.output.date_dim
                                      where d_date = &apos;1998-03-27&apos;))
   and ws_sold_date_sk   = d_date_sk
  group by i_item_id)
@@ -3980,6 +4013,7 @@ with ss_items as
           <stringProp name="variableNames"></stringProp>
           <stringProp name="TestPlan.comments">UNSUPPORTED_OPERATION ERROR: Dremio doesn&apos;t currently support non-scalar sub-queries used in an expression
 </stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -3994,6 +4028,7 @@ with ss_items as
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 59" enabled="true">
@@ -4009,7 +4044,7 @@ with wss as
         sum(case when (d_day_name=&apos;Thursday&apos;) then ss_sales_price else null end) thu_sales,
         sum(case when (d_day_name=&apos;Friday&apos;) then ss_sales_price else null end) fri_sales,
         sum(case when (d_day_name=&apos;Saturday&apos;) then ss_sales_price else null end) sat_sales
- from store_sales,date_dim
+ from minio.output.store_sales,minio.output.date_dim
  where d_date_sk = ss_sold_date_sk
  group by d_week_seq,ss_store_sk
  )
@@ -4023,7 +4058,7 @@ with wss as
         ,mon_sales mon_sales1,tue_sales tue_sales1
         ,wed_sales wed_sales1,thu_sales thu_sales1
         ,fri_sales fri_sales1,sat_sales sat_sales1
-  from wss,store,date_dim d
+  from wss,minio.output.store,minio.output.date_dim d
   where d.d_week_seq = wss.d_week_seq and
         ss_store_sk = s_store_sk and 
         d_month_seq between 1198 and 1198 + 11) y,
@@ -4032,15 +4067,14 @@ with wss as
         ,mon_sales mon_sales2,tue_sales tue_sales2
         ,wed_sales wed_sales2,thu_sales thu_sales2
         ,fri_sales fri_sales2,sat_sales sat_sales2
-  from wss,store,date_dim d
+  from wss,minio.output.store,minio.output.date_dim d
   where d.d_week_seq = wss.d_week_seq and
         ss_store_sk = s_store_sk and 
         d_month_seq between 1198+ 12 and 1198 + 23) x
  where s_store_id1=s_store_id2
    and d_week_seq1=d_week_seq2-52
-   and rownum &lt;= 100
  order by s_store_name1,s_store_id1,d_week_seq1
-</stringProp>
+limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -4048,6 +4082,7 @@ with wss as
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
@@ -4062,6 +4097,7 @@ with wss as
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 60" enabled="true">
@@ -4071,15 +4107,15 @@ with ss as (
  select
           i_item_id,sum(ss_ext_sales_price) total_sales
  from
- 	store_sales,
- 	date_dim,
-         customer_address,
-         item
+ 	minio.output.store_sales,
+ 	minio.output.date_dim,
+         minio.output.customer_address,
+         minio.output.item
  where
          i_item_id in (select
   i_item_id
 from
- item
+ minio.output.item
 where i_category in (&apos;Shoes&apos;))
  and     ss_item_sk              = i_item_sk
  and     ss_sold_date_sk         = d_date_sk
@@ -4092,15 +4128,15 @@ where i_category in (&apos;Shoes&apos;))
  select
           i_item_id,sum(cs_ext_sales_price) total_sales
  from
- 	catalog_sales,
- 	date_dim,
-         customer_address,
-         item
+ 	minio.output.catalog_sales,
+ 	minio.output.date_dim,
+         minio.output.customer_address,
+         minio.output.item
  where
          i_item_id               in (select
   i_item_id
 from
- item
+ minio.output.item
 where i_category in (&apos;Shoes&apos;))
  and     cs_item_sk              = i_item_sk
  and     cs_sold_date_sk         = d_date_sk
@@ -4113,15 +4149,15 @@ where i_category in (&apos;Shoes&apos;))
  select
           i_item_id,sum(ws_ext_sales_price) total_sales
  from
- 	web_sales,
- 	date_dim,
-         customer_address,
-         item
+ 	minio.output.web_sales,
+ 	minio.output.date_dim,
+         minio.output.customer_address,
+         minio.output.item
  where
          i_item_id               in (select
   i_item_id
 from
- item
+ minio.output.item
 where i_category in (&apos;Shoes&apos;))
  and     ws_item_sk              = i_item_sk
  and     ws_sold_date_sk         = d_date_sk
@@ -4138,11 +4174,10 @@ where i_category in (&apos;Shoes&apos;))
         select * from cs 
         union all
         select * from ws) tmp1
- where rownum &lt;= 100      
  group by i_item_id
  order by i_item_id
       ,total_sales
-</stringProp>
+ limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -4150,10 +4185,11 @@ where i_category in (&apos;Shoes&apos;))
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="QUERY 61" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="QUERY 61" enabled="false">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -4164,6 +4200,7 @@ where i_category in (&apos;Shoes&apos;))
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
       </ThreadGroup>
       <hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="query 61" enabled="true">
@@ -4172,13 +4209,13 @@ where i_category in (&apos;Shoes&apos;))
 select  promotions,total,cast(promotions as decimal(15,4))/cast(total as decimal(15,4))*100
 from
   (select sum(ss_ext_sales_price) promotions
-   from  store_sales
-        ,store
-        ,promotion
-        ,date_dim
-        ,customer
-        ,customer_address 
-        ,item
+   from  minio.output.store_sales
+        ,minio.output.store
+        ,minio.output.promotion
+        ,minio.output.date_dim
+        ,minio.output.customer
+        ,minio.output.customer_address 
+        ,minio.output.item
    where ss_sold_date_sk = d_date_sk
    and   ss_store_sk = s_store_sk
    and   ss_promo_sk = p_promo_sk
@@ -4192,12 +4229,12 @@ from
    and   d_year = 2001
    and   d_moy  = 12) promotional_sales,
   (select sum(ss_ext_sales_price) total
-   from  store_sales
-        ,store
-        ,date_dim
-        ,customer
-        ,customer_address
-        ,item
+   from  minio.output.store_sales
+        ,minio.output.store
+        ,minio.output.date_dim
+        ,minio.output.customer
+        ,minio.output.customer_address
+        ,minio.output.item
    where ss_sold_date_sk = d_date_sk
    and   ss_store_sk = s_store_sk
    and   ss_customer_sk= c_customer_sk
@@ -4208,8 +4245,8 @@ from
    and   s_gmt_offset = -6
    and   d_year = 2001
    and   d_moy  = 12) all_sales
-where rownum &lt;= 100
-order by promotions, total</stringProp>
+order by promotions, total
+limit 100;</stringProp>
           <stringProp name="queryArguments"></stringProp>
           <stringProp name="queryArgumentsTypes"></stringProp>
           <stringProp name="queryTimeout"></stringProp>
@@ -4217,10 +4254,36 @@ order by promotions, total</stringProp>
           <stringProp name="resultSetHandler">Count Records</stringProp>
           <stringProp name="resultVariable"></stringProp>
           <stringProp name="variableNames"></stringProp>
+          <stringProp name="resultSetMaxRows"></stringProp>
         </JDBCSampler>
         <hashTree/>
       </hashTree>
-      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="ConcurrentUsers" elementType="Argument">
+            <stringProp name="Argument.name">ConcurrentUsers</stringProp>
+            <stringProp name="Argument.value">5</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="LoopCount" elementType="Argument">
+            <stringProp name="Argument.name">LoopCount</stringProp>
+            <stringProp name="Argument.value">1</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="RampUp" elementType="Argument">
+            <stringProp name="Argument.name">RampUp</stringProp>
+            <stringProp name="Argument.value">15</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="RowLimit" elementType="Argument">
+            <stringProp name="Argument.name">RowLimit</stringProp>
+            <stringProp name="Argument.value">100000</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -4254,10 +4317,10 @@ order by promotions, total</stringProp>
             <connectTime>true</connectTime>
           </value>
         </objProp>
-        <stringProp name="filename">Oracle-Native-summary.csv</stringProp>
+        <stringProp name="filename">Drem418_Ora_Dremio_1_User_5_Loops_Norefl.jtl</stringProp>
       </ResultCollector>
       <hashTree/>
-      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="false">
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
         <boolProp name="ResultCollector.error_logging">false</boolProp>
         <objProp>
           <name>saveConfig</name>
@@ -4292,6 +4355,43 @@ order by promotions, total</stringProp>
           </value>
         </objProp>
         <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename">drem418_Ora_Norfl.csv</stringProp>
       </ResultCollector>
       <hashTree/>
     </hashTree>
